@@ -73,6 +73,70 @@ namespace StarterAssets
 		
 		private bool IsCurrentDeviceMouse => _playerInput.currentControlScheme == "KeyboardMouse";
 
+
+		// Pickup property
+		public float pickUpRange = 5; 
+		public Transform holdParent;
+		private GameObject heldObj;
+		public float moveForce = 250;
+
+		void WatchPickup()
+		{
+			if(_input.interact)
+			{
+				if(heldObj == null)
+				{
+					RaycastHit hit;
+					if(Physics.Raycast(transform.position , transform.TransformDirection(Vector3.forward) , out hit , pickUpRange , 6))
+					{
+						PickupObject(hit.transform.gameObject);
+					}
+				}
+				else
+				{
+					DropObject();
+				}
+			
+				
+			
+			}
+			if(heldObj != null)
+			{
+				MoveObject();
+			}
+			_input.interact = false;
+		}
+
+		void MoveObject()
+		{
+			if(Vector3.Distance(heldObj.transform.position, holdParent.transform.position) > 0.1f)
+			{
+				Vector3 moveDirection = (holdParent.position - heldObj.transform.position);
+				heldObj.GetComponent<Rigidbody>().AddForce(moveDirection * moveForce);
+			}
+		}
+		void PickupObject(GameObject pickObj)
+		{
+			if(pickObj.TryGetComponent<Rigidbody>(out Rigidbody objRig))
+			{
+				objRig.useGravity = false;
+				objRig.drag = 10;
+
+				objRig.transform.parent = holdParent;
+				heldObj = pickObj;
+			}
+		}
+		void DropObject()
+		{
+			Rigidbody heldRig = heldObj.GetComponent<Rigidbody>();
+			heldRig.useGravity = true;
+			heldRig.drag = 1;
+
+			heldObj.transform.parent = null;
+			heldObj = null;
+		}
+
+
 		private void Awake()
 		{
 			// get a reference to our main camera
@@ -98,6 +162,8 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+
+			WatchPickup();
 		}
 
 		private void LateUpdate()
