@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -75,8 +76,8 @@ namespace StarterAssets
 
 
 		// Pickup property
-		public float pickUpRange = 5; 
-		public Transform holdParent;
+		[SerializeField] float maxDistanceToPickupObject = 5; 
+		public Transform pickedObjectStartPos;
 		private GameObject heldObj;
 		public float moveForce = 250;
 
@@ -87,9 +88,14 @@ namespace StarterAssets
 				if(heldObj == null)
 				{
 					RaycastHit hit;
-					if(Physics.Raycast(transform.position , transform.TransformDirection(Vector3.forward) , out hit , pickUpRange , 6))
+					if(Physics.Raycast(transform.position , transform.TransformDirection(Vector3.forward) , out hit , maxDistanceToPickupObject ))
 					{
-						PickupObject(hit.transform.gameObject);
+						if(hit.transform.TryGetComponent<InteractableObject>(out InteractableObject obj))
+						{
+							if(obj.Grabable)
+								PickupObject(hit.transform.gameObject);
+
+						}
 					}
 				}
 				else
@@ -109,10 +115,24 @@ namespace StarterAssets
 
 		void MoveObject()
 		{
-			if(Vector3.Distance(heldObj.transform.position, holdParent.transform.position) > 0.1f)
+			// On check si l'objet est trop loin lorsque le joueur le tien, si c'est trop loin on le drop
+			float maxDistance = 5f;
+			if( Vector3.Distance(transform.position, heldObj.transform.position) > maxDistance)
 			{
-				Vector3 moveDirection = (holdParent.position - heldObj.transform.position);
+				DropObject();
+				return;
+			}	
+
+			if(Vector3.Distance(heldObj.transform.position, pickedObjectStartPos.transform.position) > 0.1f)
+			{
+				Vector3 moveDirection = (pickedObjectStartPos.position - heldObj.transform.position);
+				Debug.Log(moveDirection);
+				// x > 0.5
+		
+				
+
 				heldObj.GetComponent<Rigidbody>().AddForce(moveDirection * moveForce);
+				
 			}
 		}
 		void PickupObject(GameObject pickObj)
@@ -122,7 +142,7 @@ namespace StarterAssets
 				objRig.useGravity = false;
 				objRig.drag = 10;
 
-				objRig.transform.parent = holdParent;
+				//objRig.transform.parent = pickedObjectStartPos;
 				heldObj = pickObj;
 			}
 		}
