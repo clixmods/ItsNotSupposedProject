@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -73,6 +74,89 @@ namespace StarterAssets
 		
 		private bool IsCurrentDeviceMouse => _playerInput.currentControlScheme == "KeyboardMouse";
 
+
+		// Pickup property
+		[SerializeField] float maxDistanceToPickupObject = 5; 
+		public Transform pickedObjectStartPos;
+		private GameObject heldObj;
+		public float moveForce = 250;
+
+		void WatchPickup()
+		{
+			if(_input.interact)
+			{
+				if(heldObj == null)
+				{
+					RaycastHit hit;
+					if(Physics.Raycast(transform.position , transform.TransformDirection(Vector3.forward) , out hit , maxDistanceToPickupObject ))
+					{
+						if(hit.transform.TryGetComponent<InteractableObject>(out InteractableObject obj))
+						{
+							if(obj.Grabable)
+								PickupObject(hit.transform.gameObject);
+
+						}
+					}
+				}
+				else
+				{
+					DropObject();
+				}
+			
+				
+			
+			}
+			if(heldObj != null)
+			{
+				MoveObject();
+			}
+			_input.interact = false;
+		}
+
+		void MoveObject()
+		{
+			// On check si l'objet est trop loin lorsque le joueur le tien, si c'est trop loin on le drop
+			float maxDistance = 5f;
+			if( Vector3.Distance(transform.position, heldObj.transform.position) > maxDistance)
+			{
+				DropObject();
+				return;
+			}	
+
+			if(Vector3.Distance(heldObj.transform.position, pickedObjectStartPos.transform.position) > 0.1f)
+			{
+				Vector3 moveDirection = (pickedObjectStartPos.position - heldObj.transform.position);
+				Debug.Log(moveDirection);
+				// x > 0.5
+		
+				
+
+				heldObj.GetComponent<Rigidbody>().AddForce(moveDirection * moveForce);
+				
+			}
+		}
+		void PickupObject(GameObject pickObj)
+		{
+			if(pickObj.TryGetComponent<Rigidbody>(out Rigidbody objRig))
+			{
+				objRig.useGravity = false;
+				objRig.drag = 10;
+
+				//objRig.transform.parent = pickedObjectStartPos;
+				heldObj = pickObj;
+			}
+		}
+		void DropObject()
+		{
+			Rigidbody heldRig = heldObj.GetComponent<Rigidbody>();
+			heldRig.useGravity = true;
+			heldRig.drag = 1;
+
+			heldObj.transform.parent = null;
+			heldObj = null;
+		}
+
+
 		private void Awake()
 		{
 			// get a reference to our main camera
@@ -98,6 +182,8 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+
+			WatchPickup();
 		}
 
 		private void LateUpdate()
