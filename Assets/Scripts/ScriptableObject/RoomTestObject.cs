@@ -16,4 +16,6 @@ public class RoomTestObject : ScriptableObject
     public bool isUnlocked;
     public string sceneName;
 
+    public RoomTestObject PlayerData;
+
 }
