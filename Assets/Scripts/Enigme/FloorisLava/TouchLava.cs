@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class life : MonoBehaviour
+public class TouchLava : MonoBehaviour
 {
+
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform respawnPoint;
     public int pv = 3;
     bool poison = false;
     public float timePv = 5;
     public float timePoison = 1;
     public bool death;
-    public GameObject respawn;
-    public GameObject player;
-
+    public bool revive=false;
+   
     // Update is called once per frame
     void Update()
     {
@@ -41,7 +43,17 @@ public class life : MonoBehaviour
         if(death)
         {
             Debug.Log("is mort");
-            player.transform.position = respawn.transform.position;
+            player.gameObject.SetActive(false);
+            player.transform.position = respawnPoint.transform.position;
+            revive = true;
+            death = false;
+            pv = 3;
+            poison = false;
+        }
+        if(revive)
+        {
+            player.gameObject.SetActive(true);
+            revive = false;
         }
     }
     void OnTriggerEnter(Collider other)
@@ -54,10 +66,11 @@ public class life : MonoBehaviour
     }
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == 6)
+        if (other.gameObject.layer == 7)
         {
             Debug.Log("plus coli lave");
             poison = false;
+            timePoison = 5;
         }
     }
 }
