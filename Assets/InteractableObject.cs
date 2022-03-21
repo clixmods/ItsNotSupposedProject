@@ -10,6 +10,7 @@ enum TypeInteracbleObject
 }
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Outline))]
 public class InteractableObject : MonoBehaviour
 {
     [SerializeField] TypeInteracbleObject Type;
