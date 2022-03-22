@@ -76,10 +76,16 @@ namespace StarterAssets
 
 
 		// Pickup property
+		[Tooltip("How far the player can take the object")]
 		[SerializeField] float maxDistanceToPickupObject = 5; 
+		[Tooltip("Where the object will be move, when the player take it")]
 		public Transform pickedObjectStartPos;
 		private GameObject heldObj;
+		[Tooltip("Movement force applied on the object when the player held it while he move.")]
 		public float moveForce = 250;
+
+		// Player property
+		
 
 		void WatchPickup()
 		{
