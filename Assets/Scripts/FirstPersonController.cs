@@ -132,7 +132,7 @@ namespace StarterAssets
 			if(Vector3.Distance(heldObj.transform.position, pickedObjectStartPos.transform.position) > 0.1f)
 			{
 				Vector3 moveDirection = (pickedObjectStartPos.position - heldObj.transform.position);
-				Debug.Log(moveDirection);
+				//Debug.Log(moveDirection);
 				// x > 0.5
 		
 				
@@ -147,7 +147,7 @@ namespace StarterAssets
 			{
 				objRig.useGravity = false;
 				objRig.drag = 10;
-
+				objRig.GetComponent<InteractableObject>().isGrabbed = true;
 				//objRig.transform.parent = pickedObjectStartPos;
 				heldObj = pickObj;
 			}
@@ -155,6 +155,8 @@ namespace StarterAssets
 		void DropObject()
 		{
 			Rigidbody heldRig = heldObj.GetComponent<Rigidbody>();
+
+			heldObj.GetComponent<InteractableObject>().isGrabbed = false;
 			heldRig.useGravity = true;
 			heldRig.drag = 1;
 
