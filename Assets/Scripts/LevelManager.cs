@@ -11,9 +11,11 @@ public class LevelManager : MonoBehaviour
     [SerializeField] Transform PlayerSpawnPoint;
     [SerializeField] Transform PlayerEndgamePoint;
 
+    [SerializeField] float OOBLimit = -50;
+
     [SerializeField] bool _canEndgame;
    
-
+    Transform _player;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,9 @@ public class LevelManager : MonoBehaviour
         }
 
         GameObject Player = Instantiate(playerPrefab);
+        //s_player = Player.transform;
         PlayerManager playerManager = Player.GetComponentInChildren<PlayerManager>();
+        _player = playerManager.transform;
         playerManager.PlayerSettings = LevelPlayerSettings;
         Player.transform.position = PlayerSpawnPoint.transform.position;
 
@@ -39,6 +43,11 @@ public class LevelManager : MonoBehaviour
         return PlayerSpawnPoint;
     }
 
+    public float GetOOBLimit()
+    {
+        return OOBLimit;
+    }
+
     public void Endgame()
     {
         Debug.Log("Endgame");
@@ -47,6 +56,7 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(_player.position.y < OOBLimit)
+            _player.GetComponent<PlayerManager>().death = true;
     }
 }

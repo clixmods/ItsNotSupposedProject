@@ -33,7 +33,7 @@ public class EnigmeFormeDansLesTrous : MonoBehaviour
                 break;
             }
         }
-        Debug.Log("Challenge state : "+finished);
+        //Debug.Log("Challenge state : "+finished);
         if(finished == true)
             LevelManager.Util.CanEndgame = true;
     }
