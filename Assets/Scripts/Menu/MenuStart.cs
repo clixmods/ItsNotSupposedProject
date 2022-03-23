@@ -18,24 +18,29 @@ public class MenuStart : MonoBehaviour
     [Header("LVL1")]
     public Button buttonLevel1;
     public Button buttonNextLVL1;
-    public GameObject emptyLVL1;
+    public GameObject emptyLVL1;    
+    [SerializeField] string SceneNameLevel1;
     [Header("LVL2")]
     public Button buttonLevel2;
     public Button buttonNextLVL2;
     public GameObject emptyLVL2;
+    [SerializeField] string SceneNameLevel2;
     [Header("LVL3")]
     public Button buttonLevel3;
     public Button buttonNextLVL3;
     public GameObject emptyLVL3;
+    [SerializeField] string SceneNameLevel3;
     [Header("LVL4")]
     public Button buttonLevel4;
     public Button buttonNextLVL4;
     public GameObject emptyLVL4;
+    [SerializeField] string SceneNameLevel4;
     // Start is called before the first frame update
     void Start()
     {
         OnBeginMenu();
         OnNomminationButton();
+        
     }
     void OnBeginMenu()
     {
@@ -135,24 +140,25 @@ public class MenuStart : MonoBehaviour
     }
     void OnPlayLVL1()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene(SceneNameLevel1);
     }
     void OnPlayLVL2()
     {
-        SceneManager.LoadScene("Level2");
+        SceneManager.LoadScene(SceneNameLevel2);
     }
     void OnPlayLVL3()
     {
-        SceneManager.LoadScene("Level3");
+        SceneManager.LoadScene(SceneNameLevel3);
     }
     void OnPlayLVL4()
     {
-        SceneManager.LoadScene("Level4");
+        SceneManager.LoadScene(SceneNameLevel4);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }

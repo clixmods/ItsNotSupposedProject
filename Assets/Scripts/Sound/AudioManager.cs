@@ -79,8 +79,15 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        if(Util != this)
-            Util = this;  
+        if(Util == this || Util == null)
+        {
+            Util = this;
+        }      
+        else
+            Destroy(gameObject);
+
+
+        DontDestroyOnLoad(gameObject);
 
         InitAudioSources();
     }
@@ -100,7 +107,7 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        
     }
 
     // Update is called once per frame

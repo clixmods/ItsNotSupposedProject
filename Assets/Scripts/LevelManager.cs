@@ -51,7 +51,7 @@ public class LevelManager : MonoBehaviour
     public void Endgame()
     {
         Debug.Log("Endgame");
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MenuStart");
     }
 
     // Update is called once per frame
