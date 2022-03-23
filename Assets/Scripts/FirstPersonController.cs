@@ -76,10 +76,16 @@ namespace StarterAssets
 
 
 		// Pickup property
+		[Tooltip("How far the player can take the object")]
 		[SerializeField] float maxDistanceToPickupObject = 5; 
+		[Tooltip("Where the object will be move, when the player take it")]
 		public Transform pickedObjectStartPos;
 		private GameObject heldObj;
+		[Tooltip("Movement force applied on the object when the player held it while he move.")]
 		public float moveForce = 250;
+
+		// Player property
+		
 
 		void WatchPickup()
 		{
@@ -102,9 +108,6 @@ namespace StarterAssets
 				{
 					DropObject();
 				}
-			
-				
-			
 			}
 			if(heldObj != null)
 			{
@@ -126,11 +129,6 @@ namespace StarterAssets
 			if(Vector3.Distance(heldObj.transform.position, pickedObjectStartPos.transform.position) > 0.1f)
 			{
 				Vector3 moveDirection = (pickedObjectStartPos.position - heldObj.transform.position);
-				Debug.Log(moveDirection);
-				// x > 0.5
-		
-				
-
 				heldObj.GetComponent<Rigidbody>().AddForce(moveDirection * moveForce);
 				
 			}
@@ -141,19 +139,26 @@ namespace StarterAssets
 			{
 				objRig.useGravity = false;
 				objRig.drag = 10;
-
-				//objRig.transform.parent = pickedObjectStartPos;
+				objRig.GetComponent<InteractableObject>().isGrabbed = true;
 				heldObj = pickObj;
 			}
 		}
 		void DropObject()
 		{
 			Rigidbody heldRig = heldObj.GetComponent<Rigidbody>();
+			heldObj.GetComponent<InteractableObject>().isGrabbed = false;
 			heldRig.useGravity = true;
 			heldRig.drag = 1;
-
-			heldObj.transform.parent = null;
 			heldObj = null;
+		}
+
+
+		void ChangeRotationTarget()
+		{
+			if(heldObj.TryGetComponent<Rigidbody>(out Rigidbody objRig))
+			{
+				objRig.MoveRotation( objRig.rotation * Quaternion.Euler((_input.look.x * 10 ), (_input.look.y * 10), 0)) ;
+			}
 		}
 
 
@@ -184,11 +189,22 @@ namespace StarterAssets
 			Move();
 
 			WatchPickup();
+
+			
+			
+		}
+		private void FixedUpdate()
+		{
+			if (_input.rotate && heldObj != null) //we only want to begin this process on the initial click, as Imtiaj noted
+			{
+				ChangeRotationTarget();
+			}
 		}
 
 		private void LateUpdate()
 		{
-			CameraRotation();
+			if (!_input.rotate)
+				CameraRotation();
 		}
 
 		private void GroundedCheck()
