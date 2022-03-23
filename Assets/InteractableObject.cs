@@ -10,9 +10,12 @@ enum TypeInteracbleObject
 }
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Outline))]
 public class InteractableObject : MonoBehaviour
 {
     [SerializeField] TypeInteracbleObject Type;
+    bool _isGrabbed;
+
 
     public bool Grabable
     {
@@ -21,6 +24,11 @@ public class InteractableObject : MonoBehaviour
                 return false; }
     }
 
+    public bool isGrabbed
+    {
+        get{ return _isGrabbed;}
+        set{ _isGrabbed = value;}
+    }
         // Start is called before the first frame update
     void Start()
     {

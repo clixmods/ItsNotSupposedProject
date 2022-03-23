@@ -14,9 +14,9 @@ public class PlayerDataObject : ScriptableObject
 
 
     [Tooltip("The Number of point of health of the player")]
-    public int health=3;
+    public int StartHealth=3;
     [Tooltip("The time before the player regain his missing health, one by one")]
-    public float timeRegenHealt = 5;
+    public float timeRegenHealth = 5;
     [Tooltip("The time before the player lose his pv in the lava, one by one")]
     public float timePoison = 1;
 
