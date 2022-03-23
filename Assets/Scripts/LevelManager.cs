@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public PlayerDataObject LevelPlayerSettings;
@@ -51,6 +51,7 @@ public class LevelManager : MonoBehaviour
     public void Endgame()
     {
         Debug.Log("Endgame");
+        SceneManager.LoadScene("MenuStart");
     }
 
     // Update is called once per frame
