@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2897473753761722917}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,6 +100,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 9005220659476430823, guid: da38696eaa16ea74f828fa28c840c195, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da38696eaa16ea74f828fa28c840c195, type: 3}
 --- !u!4 &4375372098051120116 stripped
@@ -114,14 +118,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2897473753761722917}
     m_Modifications:
+    - target: {fileID: 1668555089989274079, guid: eeebdcb186c87654894652dc1f09c735, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4135013735270702863, guid: eeebdcb186c87654894652dc1f09c735, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5393215578589016641, guid: eeebdcb186c87654894652dc1f09c735, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393215578589016642, guid: eeebdcb186c87654894652dc1f09c735, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5420857361349278248, guid: eeebdcb186c87654894652dc1f09c735, type: 3}
       propertyPath: analogMovement
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7868560605527819007, guid: eeebdcb186c87654894652dc1f09c735, type: 3}
+      propertyPath: PlayerSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 42d926ec0f0c9ac46a5363226b85e5c1, type: 2}
     - target: {fileID: 8616685848737228371, guid: eeebdcb186c87654894652dc1f09c735, type: 3}
       propertyPath: GroundLayers.m_Bits
       value: 1
@@ -133,6 +153,10 @@ PrefabInstance:
     - target: {fileID: 8616685848737228372, guid: eeebdcb186c87654894652dc1f09c735, type: 3}
       propertyPath: m_Name
       value: PlayerCapsule
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228372, guid: eeebdcb186c87654894652dc1f09c735, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: eeebdcb186c87654894652dc1f09c735, type: 3}
       propertyPath: m_RootOrder
@@ -206,6 +230,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerFollowCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 8762286023885395077, guid: a9143fcba06f05641bfdb03283910e56, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: a9143fcba06f05641bfdb03283910e56, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -254,6 +282,10 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 8728553125867064693}
+    - target: {fileID: 8762286024517199033, guid: a9143fcba06f05641bfdb03283910e56, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9143fcba06f05641bfdb03283910e56, type: 3}
 --- !u!4 &4168483262982282166 stripped
