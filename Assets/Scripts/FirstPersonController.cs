@@ -108,9 +108,6 @@ namespace StarterAssets
 				{
 					DropObject();
 				}
-			
-				
-			
 			}
 			if(heldObj != null)
 			{
@@ -132,11 +129,6 @@ namespace StarterAssets
 			if(Vector3.Distance(heldObj.transform.position, pickedObjectStartPos.transform.position) > 0.1f)
 			{
 				Vector3 moveDirection = (pickedObjectStartPos.position - heldObj.transform.position);
-				//Debug.Log(moveDirection);
-				// x > 0.5
-		
-				
-
 				heldObj.GetComponent<Rigidbody>().AddForce(moveDirection * moveForce);
 				
 			}
@@ -148,47 +140,25 @@ namespace StarterAssets
 				objRig.useGravity = false;
 				objRig.drag = 10;
 				objRig.GetComponent<InteractableObject>().isGrabbed = true;
-				//objRig.transform.parent = pickedObjectStartPos;
-				//objRig.transform.rotation = Quaternion.identity;
 				heldObj = pickObj;
 			}
 		}
 		void DropObject()
 		{
 			Rigidbody heldRig = heldObj.GetComponent<Rigidbody>();
-
 			heldObj.GetComponent<InteractableObject>().isGrabbed = false;
 			heldRig.useGravity = true;
 			heldRig.drag = 1;
-
-			//heldObj.transform.parent = null;
 			heldObj = null;
 		}
 
 
 		void ChangeRotationTarget()
 		{
-			// Ray ray = Camera.main.ScreenPointToRay(_input.mousePosition);
-			// Plane playerPlane = new Plane (Vector3.up, transform.position);
-
-			// float hitdist = 0.0f;
-
-			// if (playerPlane.Raycast (ray, out hitdist))
-			// {
-			// 	heldObj.transform.position = ray.GetPoint (hitdist);
-			// }
-			// Quaternion targetRotation = Quaternion.LookRotation (heldObj.transform.position - transform.position);
-			// heldObj.transform.rotation = Quaternion.Slerp (transform.rotation, targetRotation, 300 * Time.deltaTime);
-
-			Debug.Log(_input.mousePosition);
-
 			if(heldObj.TryGetComponent<Rigidbody>(out Rigidbody objRig))
 			{
 				objRig.MoveRotation( objRig.rotation * Quaternion.Euler((_input.look.x * 10 ), (_input.look.y * 10), 0)) ;
-				//objRig.AddRelativeTorque(new Vector3( (_input.look.x ), (_input.look.y), 0), ForceMode.Impulse);
-				//.eulerAngles = new Vector3( (_input.look.x ), (_input.look.y), 0);
 			}
-			//heldObj.transform.Rotate((_input.look.x ), (_input.look.y), 0, Space.Self);
 		}
 
 
@@ -227,9 +197,7 @@ namespace StarterAssets
 		{
 			if (_input.rotate && heldObj != null) //we only want to begin this process on the initial click, as Imtiaj noted
 			{
-
 				ChangeRotationTarget();
-
 			}
 		}
 

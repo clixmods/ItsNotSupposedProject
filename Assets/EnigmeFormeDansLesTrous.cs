@@ -6,6 +6,7 @@ public class EnigmeFormeDansLesTrous : MonoBehaviour
 {
 
     [SerializeField] GameObject[] ItemNeeded;
+    [SerializeField] GameObject[] WallToDestroyed;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,8 +35,16 @@ public class EnigmeFormeDansLesTrous : MonoBehaviour
             }
         }
         //Debug.Log("Challenge state : "+finished);
-        if(finished == true)
+        if(finished == true && !LevelManager.Util.CanEndgame)
+        {
             LevelManager.Util.CanEndgame = true;
+            for(int i = 0 ; i < WallToDestroyed.Length; i++)
+            {
+                WallToDestroyed[i].SetActive(false);
+            }
+        }
+            
+
     }
     void OnTriggerStay(Collider other)
     {
