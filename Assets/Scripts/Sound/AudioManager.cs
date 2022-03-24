@@ -40,6 +40,11 @@ using UnityEngine.Audio;
         public float MaxDistance = 500;
         public AudioRolloffMode CurveType = AudioRolloffMode.Logarithmic;
         public AnimationCurve distanceCurve = new AnimationCurve(new Keyframe[] { new Keyframe(0, 1), new Keyframe(1, 0) });
+
+        [Header("Subtitle")]
+        public string Text;
+        public float customDuration;
+
     }
 
 //[RequireComponent(typeof(AudioSource))]
@@ -123,7 +128,7 @@ public class AudioManager : MonoBehaviour
 
     void DisableInusedAudioSource()
     {
-          foreach(GameObject aS in audioSource)
+        foreach(GameObject aS in audioSource)
         {
             if(!aS.GetComponent<AudioSource>().isPlaying)
             {
@@ -163,7 +168,7 @@ public class AudioManager : MonoBehaviour
         Aliase clip = GetSoundByAliase(aliaseName);
         if( clip.audio.Length == 0)
         {
-            Debug.LogWarning("AudioManager : Aliase: "+aliaseName+" contains no sounds.");
+            Debug.LogError("AudioManager : Aliase: "+aliaseName+" contains no sounds.");
             return;
         }
         AudioSource audioS = GetAudioSource();
@@ -194,9 +199,14 @@ public class AudioManager : MonoBehaviour
         {
             audioS.clip = clip.audio[Random.Range(0,clip.audio.Length)];
             audioS.Play();
+
         }
         else
+        {
             audioS.PlayOneShot(clip.audio[Random.Range(0,clip.audio.Length)]);
+            UIManager.CreateSubtitle(clip.Text);
+            
+        }
         
 
     } 
@@ -204,6 +214,8 @@ public class AudioManager : MonoBehaviour
     {
         
     }
+
+    
 }
 
 

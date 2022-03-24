@@ -55,7 +55,7 @@ namespace StarterAssets
 		public float BottomClamp = -90.0f;
 
 		// cinemachine
-		private float _cinemachineTargetPitch;
+		[SerializeField] float _cinemachineTargetPitch;
 
 		// player
 		private float _speed;
@@ -138,6 +138,7 @@ namespace StarterAssets
 		}
 		void PickupObject(GameObject pickObj)
 		{
+			AudioManager.PlaySoundAtPosition("dialogue_test",Vector3.zero);
 			if(pickObj.TryGetComponent<Rigidbody>(out Rigidbody objRig))
 			{
 				objRig.useGravity = false;
@@ -148,6 +149,7 @@ namespace StarterAssets
 		}
 		void DropObject()
 		{
+
 			Rigidbody heldRig = heldObj.GetComponent<Rigidbody>();
 			heldObj.GetComponent<InteractableObject>().isGrabbed = false;
 			heldRig.useGravity = true;
@@ -160,7 +162,32 @@ namespace StarterAssets
 		{
 			if(heldObj.TryGetComponent<Rigidbody>(out Rigidbody objRig))
 			{
-				objRig.MoveRotation( objRig.rotation * Quaternion.Euler((_input.look.x * 10 ), (_input.look.y * 10), 0)) ;
+				objRig.freezeRotation = false;
+				Vector3 rot = heldObj.transform.position - transform.position;
+
+
+				
+				//objRig.AddTorque(   new Vector3((_input.look.y *  rot.y * 10 ), (_input.look.x* rot.x * 10), 0), ForceMode.VelocityChange);
+				//Vector3 oof = objRig.rotation.eulerAngles + new Vector3( (_input.look.x * 10 ), (_input.look.y * 10), 0)  ;
+				//objRig.MoveRotation( Quaternion.LookRotation(oof) ) ;
+				// select the axis by which you want to rotate the GameObject
+				//objRig.transform.RotateAround (Vector3.down, _input.look.x);
+				//objRig.transform.RotateAround (Vector3.right, _input.look.y);
+
+
+
+				/*
+					float rotationSpeed = 0.2f;
+ 
+	void OnMouseDrag()
+	{
+		float XaxisRotation = Input.GetAxis("Mouse X")*rotationSpeed;
+		float YaxisRotation = Input.GetAxis("Mouse Y")*rotationSpeed;
+		// select the axis by which you want to rotate the GameObject
+		transform.RotateAround (Vector3.down, XaxisRotation);
+		transform.RotateAround (Vector3.right, YaxisRotation);
+	}
+				*/	
 			}
 		}
 
