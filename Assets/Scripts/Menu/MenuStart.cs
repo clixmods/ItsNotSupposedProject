@@ -18,7 +18,7 @@ public class MenuStart : MonoBehaviour
     [Header("LVL1")]
     public Button buttonLevel1;
     public Button buttonNextLVL1;
-    public GameObject emptyLVL1;    
+    public GameObject emptyLVL1;  
     [SerializeField] string SceneNameLevel1;
     [Header("LVL2")]
     public Button buttonLevel2;
@@ -52,7 +52,9 @@ public class MenuStart : MonoBehaviour
 
         backToMenu.gameObject.SetActive(false);
 
-        emptyLVL1.gameObject.SetActive(true);
+
+        emptyLVL1.gameObject.SetActive(false);
+
         emptyLVL2.gameObject.SetActive(true);
         emptyLVL3.gameObject.SetActive(true);
         emptyLVL4.gameObject.SetActive(true);
@@ -64,6 +66,7 @@ public class MenuStart : MonoBehaviour
 
         
         emptySelectLevel.gameObject.SetActive(false);
+        buttonLevel1.gameObject.SetActive(false);
 
     }
     void OnNomminationButton()
@@ -100,7 +103,9 @@ public class MenuStart : MonoBehaviour
         emptyLVL3.gameObject.SetActive(false);
         emptyLVL4.gameObject.SetActive(false);
 
-        buttonNextLVL1.gameObject.SetActive(true);
+
+        buttonNextLVL1.gameObject.SetActive(false);
+
         buttonNextLVL2.gameObject.SetActive(true);
         buttonNextLVL3.gameObject.SetActive(true);
         buttonNextLVL4.gameObject.SetActive(true);
@@ -113,6 +118,7 @@ public class MenuStart : MonoBehaviour
     void OnSelectLevel1()
     {
         emptyLVL1.gameObject.SetActive(true);
+
         emptyLVL2.gameObject.SetActive(false);
         emptyLVL3.gameObject.SetActive(false);
         emptyLVL4.gameObject.SetActive(false);
