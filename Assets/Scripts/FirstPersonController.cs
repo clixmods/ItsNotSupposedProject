@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -26,6 +27,8 @@ namespace StarterAssets
 		public float JumpHeight = 1.2f;
 		[Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
 		public float Gravity = -15.0f;
+		[Tooltip("Number of Jumps")]
+		public float JumpMax = 1;
 
 		[Space(10)]
 		[Tooltip("Time required to pass before being able to jump again. Set to 0f to instantly jump again")]
@@ -59,6 +62,7 @@ namespace StarterAssets
 		private float _rotationVelocity;
 		private float _verticalVelocity;
 		private float _terminalVelocity = 53.0f;
+		private int jumpCount = 0;
 
 		// timeout deltatime
 		private float _jumpTimeoutDelta;
@@ -72,6 +76,94 @@ namespace StarterAssets
 		private const float _threshold = 0.01f;
 		
 		private bool IsCurrentDeviceMouse => _playerInput.currentControlScheme == "KeyboardMouse";
+
+
+		// Pickup property
+		[Tooltip("How far the player can take the object")]
+		[SerializeField] float maxDistanceToPickupObject = 5; 
+		[Tooltip("Where the object will be move, when the player take it")]
+		public Transform pickedObjectStartPos;
+		private GameObject heldObj;
+		[Tooltip("Movement force applied on the object when the player held it while he move.")]
+		public float moveForce = 250;
+
+		// Player property
+		
+
+		void WatchPickup()
+		{
+			if(_input.interact)
+			{
+				if(heldObj == null)
+				{
+					RaycastHit hit;
+					if(Physics.Raycast(transform.position , transform.TransformDirection(Vector3.forward) , out hit , maxDistanceToPickupObject ))
+					{
+						if(hit.transform.TryGetComponent<InteractableObject>(out InteractableObject obj))
+						{
+							if(obj.Grabable)
+								PickupObject(hit.transform.gameObject);
+
+						}
+					}
+				}
+				else
+				{
+					DropObject();
+				}
+			}
+			if(heldObj != null)
+			{
+				MoveObject();
+			}
+			_input.interact = false;
+		}
+
+		void MoveObject()
+		{
+			// On check si l'objet est trop loin lorsque le joueur le tien, si c'est trop loin on le drop
+			float maxDistance = 5f;
+			if( Vector3.Distance(transform.position, heldObj.transform.position) > maxDistance)
+			{
+				DropObject();
+				return;
+			}	
+
+			if(Vector3.Distance(heldObj.transform.position, pickedObjectStartPos.transform.position) > 0.1f)
+			{
+				Vector3 moveDirection = (pickedObjectStartPos.position - heldObj.transform.position);
+				heldObj.GetComponent<Rigidbody>().AddForce(moveDirection * moveForce);
+				
+			}
+		}
+		void PickupObject(GameObject pickObj)
+		{
+			if(pickObj.TryGetComponent<Rigidbody>(out Rigidbody objRig))
+			{
+				objRig.useGravity = false;
+				objRig.drag = 10;
+				objRig.GetComponent<InteractableObject>().isGrabbed = true;
+				heldObj = pickObj;
+			}
+		}
+		void DropObject()
+		{
+			Rigidbody heldRig = heldObj.GetComponent<Rigidbody>();
+			heldObj.GetComponent<InteractableObject>().isGrabbed = false;
+			heldRig.useGravity = true;
+			heldRig.drag = 1;
+			heldObj = null;
+		}
+
+
+		void ChangeRotationTarget()
+		{
+			if(heldObj.TryGetComponent<Rigidbody>(out Rigidbody objRig))
+			{
+				objRig.MoveRotation( objRig.rotation * Quaternion.Euler((_input.look.x * 10 ), (_input.look.y * 10), 0)) ;
+			}
+		}
+
 
 		private void Awake()
 		{
@@ -98,11 +190,24 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+
+			WatchPickup();
+
+			
+			
+		}
+		private void FixedUpdate()
+		{
+			if (_input.rotate && heldObj != null) //we only want to begin this process on the initial click, as Imtiaj noted
+			{
+				ChangeRotationTarget();
+			}
 		}
 
 		private void LateUpdate()
 		{
-			CameraRotation();
+			if (!_input.rotate)
+				CameraRotation();
 		}
 
 		private void GroundedCheck()
@@ -183,8 +288,15 @@ namespace StarterAssets
 
 		private void JumpAndGravity()
 		{
-			if (Grounded)
+			Debug.Log("jumpCount "+jumpCount);
+			if(Grounded && jumpCount >= JumpMax)
 			{
+				jumpCount = 0;
+			}
+
+			if (Grounded || ( !Grounded && jumpCount < JumpMax) )
+			{
+				
 				// reset the fall timeout timer
 				_fallTimeoutDelta = FallTimeout;
 
@@ -197,6 +309,10 @@ namespace StarterAssets
 				// Jump
 				if (_input.jump && _jumpTimeoutDelta <= 0.0f)
 				{
+					jumpCount++;
+					if( ( !Grounded && jumpCount < JumpMax))
+						_input.jump = false;
+
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 				}
@@ -217,9 +333,10 @@ namespace StarterAssets
 				{
 					_fallTimeoutDelta -= Time.deltaTime;
 				}
-
+				
 				// if we are not grounded, do not jump
 				_input.jump = false;
+				
 			}
 
 			// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
