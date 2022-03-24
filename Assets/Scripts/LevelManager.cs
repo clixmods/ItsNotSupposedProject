@@ -36,9 +36,9 @@ public class LevelManager : MonoBehaviour
         playerController.JumpMax = LevelPlayerSettings.MaxJump;
         _player = playerManager.transform;
         playerManager.PlayerSettings = LevelPlayerSettings;
-
-        Player.transform.position = PlayerSpawnPoint.transform.position;
-
+        playerController.enabled = false;
+        playerController.transform.position = PlayerSpawnPoint.transform.position;
+        playerController.enabled = true;
         UIManager.CreateHintString(PlayerEndgamePoint.gameObject, startText ,6666 );
     }
     public bool CanEndgame
