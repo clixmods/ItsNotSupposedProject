@@ -72,6 +72,7 @@ public class UIManager : MonoBehaviour
         HintstringProperty component = hintString.GetComponent<HintstringProperty>();
         component.relatedObject = aGameObject;
         component.MinDistance = minDistance;
+        component.setting = SettingHintstring.AlwaysShow;
         component.textComponent.text = message;
         if(icon == null)
         {

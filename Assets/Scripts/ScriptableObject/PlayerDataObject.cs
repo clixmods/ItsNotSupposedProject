@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(fileName = "Player Data", menuName = "Player/Setting", order = 1)]
 public class PlayerDataObject : ScriptableObject
@@ -20,4 +19,6 @@ public class PlayerDataObject : ScriptableObject
     [Tooltip("The time before the player lose his pv in the lava, one by one")]
     public float timePoison = 1;
 
+    public int MaxJump = 1;
+    public float JumpHeight = 1;
 }

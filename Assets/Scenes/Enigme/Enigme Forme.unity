@@ -414,6 +414,9 @@ MonoBehaviour:
   PlayerEndgamePoint: {fileID: 504070242}
   OOBLimit: -50
   _canEndgame: 0
+  startText: In this level, you will have to put shapes forms in their  corresponding
+    shapes in the wall. When you're done doing this, the wall will disappears and
+    you'll can finish the level.
 --- !u!4 &429675790
 Transform:
   m_ObjectHideFlags: 0
@@ -1370,7 +1373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7769627197737853001, guid: 53475a6a6daf8f148aa3b364779dd86d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.19
+      value: 24.05
       objectReference: {fileID: 0}
     - target: {fileID: 7769627197737853001, guid: 53475a6a6daf8f148aa3b364779dd86d, type: 3}
       propertyPath: m_LocalPosition.y
