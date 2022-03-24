@@ -17,7 +17,8 @@ MonoBehaviour:
   aliases:
   - name: dialogue_test
     MixerGroup: {fileID: 0}
-    audio: []
+    audio:
+    - {fileID: 8300000, guid: 3cf4c2db7b8e9dc46a2bb16506413d69, type: 3}
     bypassEffects: 0
     bypassListenerEffects: 0
     bypassReverbZones: 0
@@ -40,5 +41,5 @@ MonoBehaviour:
       m_PreInfinity: 0
       m_PostInfinity: 0
       m_RotationOrder: 0
-    Text: 'Narrator: Hello I''m a test dialogue '
+    Text: 'Narrator: Hello I''m a big dick'
     customDuration: 0
