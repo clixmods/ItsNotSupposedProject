@@ -13,7 +13,7 @@ public class EnigmeFormeDansLesTrous : MonoBehaviour
         for(int i = 0 ; i < ItemNeeded.Length; i++)
         {
            
-            UIManager.CreateHintString(ItemNeeded[i], "Press [E] to grab." , 50);
+            //UIManager.CreateHintString(ItemNeeded[i], "Press [E] to grab." , 50);
              
         }
     }
