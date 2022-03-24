@@ -27,6 +27,8 @@ namespace StarterAssets
 		public float JumpHeight = 1.2f;
 		[Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
 		public float Gravity = -15.0f;
+		[Tooltip("Number of Jumps")]
+		public float JumpMax = 1;
 
 		[Space(10)]
 		[Tooltip("Time required to pass before being able to jump again. Set to 0f to instantly jump again")]
@@ -60,6 +62,7 @@ namespace StarterAssets
 		private float _rotationVelocity;
 		private float _verticalVelocity;
 		private float _terminalVelocity = 53.0f;
+		private int jumpCount = 0;
 
 		// timeout deltatime
 		private float _jumpTimeoutDelta;
@@ -285,8 +288,15 @@ namespace StarterAssets
 
 		private void JumpAndGravity()
 		{
-			if (Grounded)
+			Debug.Log("jumpCount "+jumpCount);
+			if(Grounded && jumpCount >= JumpMax)
 			{
+				jumpCount = 0;
+			}
+
+			if (Grounded || ( !Grounded && jumpCount < JumpMax) )
+			{
+				
 				// reset the fall timeout timer
 				_fallTimeoutDelta = FallTimeout;
 
@@ -299,6 +309,10 @@ namespace StarterAssets
 				// Jump
 				if (_input.jump && _jumpTimeoutDelta <= 0.0f)
 				{
+					jumpCount++;
+					if( ( !Grounded && jumpCount < JumpMax))
+						_input.jump = false;
+
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 				}
@@ -319,9 +333,10 @@ namespace StarterAssets
 				{
 					_fallTimeoutDelta -= Time.deltaTime;
 				}
-
+				
 				// if we are not grounded, do not jump
 				_input.jump = false;
+				
 			}
 
 			// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)

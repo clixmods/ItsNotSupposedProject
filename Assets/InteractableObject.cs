@@ -21,6 +21,9 @@ public class InteractableObject : MonoBehaviour
     MeshCollider _collider;
     Vector3 _initialPos;
     Quaternion _initialRotation;
+
+    HintstringProperty _hintstringProperty;
+    
     public bool Grabable
     {
         get{    if(Type == TypeInteracbleObject.Grabable )
@@ -33,6 +36,7 @@ public class InteractableObject : MonoBehaviour
         get{ return _isGrabbed;}
         set{ _isGrabbed = value;}
     }
+    
         // Start is called before the first frame update
     void Start()
     {

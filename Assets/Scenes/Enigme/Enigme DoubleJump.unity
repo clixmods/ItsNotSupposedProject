@@ -212,12 +212,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53633d8118e4cf640bcc3a5c20d52317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelPlayerSettings: {fileID: 11400000, guid: 42d926ec0f0c9ac46a5363226b85e5c1, type: 2}
+  LevelPlayerSettings: {fileID: 11400000, guid: 85e5d574a84ae9248b13be18dd99665c, type: 2}
   playerPrefab: {fileID: 5322241869790498710, guid: 5707faff5b183cb42803956e15bb172a, type: 3}
   PlayerSpawnPoint: {fileID: 976535819}
   PlayerEndgamePoint: {fileID: 504070242}
   OOBLimit: -50
   _canEndgame: 1
+  startText: In this level, you will test the double jump, for that, try do jump
+    over the wall, and end the level.
 --- !u!4 &429675790
 Transform:
   m_ObjectHideFlags: 0
