@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6fee4f8926ba644283bc12220e01b64, type: 3}
   m_Name: Level Data
   m_EditorClassIdentifier: 
+  Name: Level Name
+  Description: Beautiful Description
+  PreviewImage: {fileID: 21300000, guid: b4d15f4d855792d4eb742a89061002af, type: 3}
+  isUnlocked: 0
+  sceneName: 
