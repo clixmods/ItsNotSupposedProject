@@ -21,7 +21,7 @@ using UnityEngine.Audio;
         [Range(-3,3)]
         public float minPitch = 1f;
         [Range(-3,3)]
-        public float maxPitch = 1f;
+        public float maxPitch = 1.01f;
         [Range(-1,1)]
         public float stereoPan = 0;
         [Range(0,1)]
@@ -180,7 +180,9 @@ public class AudioManager : MonoBehaviour
         audioS.volume = clip.volume;
         audioS.loop = clip.isLooping;
         audioS.pitch = Random.Range(clip.minPitch, clip.maxPitch);
-        audioS.outputAudioMixerGroup = clip.MixerGroup;
+        if(clip.MixerGroup != null)
+            audioS.outputAudioMixerGroup = clip.MixerGroup;
+
         switch(clip.CurveType)
         {
             case AudioRolloffMode.Logarithmic:
@@ -203,7 +205,9 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            audioS.PlayOneShot(clip.audio[Random.Range(0,clip.audio.Length)]);
+            audioS.PlayOneShot(clip.audio[Random.Range(0,clip.audio.Length)], clip.volume);
+             //audioS.clip = clip.audio[0];
+             //audioS.Play();
             UIManager.CreateSubtitle(clip.Text);
             
         }

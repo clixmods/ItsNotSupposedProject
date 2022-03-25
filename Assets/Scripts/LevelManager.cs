@@ -27,9 +27,8 @@ public class LevelManager : MonoBehaviour
         {
             Util = this;
         }
-
+        Debug.LogError("Level Manager is on");
         GameObject Player = Instantiate(playerPrefab);
-        //s_player = Player.transform;
         PlayerManager playerManager = Player.GetComponentInChildren<PlayerManager>();
         FirstPersonController playerController = Player.GetComponentInChildren<FirstPersonController>();
         playerController.JumpHeight = LevelPlayerSettings.JumpHeight;
@@ -65,7 +64,8 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_player.position.y < OOBLimit)
-            _player.GetComponent<PlayerManager>().death = true;
+    
+     
+            
     }
 }

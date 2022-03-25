@@ -47,6 +47,11 @@ public class InteractableObject : MonoBehaviour
         _initialRotation = transform.rotation;
     }
 
+
+    public virtual void Triggered()
+    {
+
+    }
     // Update is called once per frame
     void Update()
     {

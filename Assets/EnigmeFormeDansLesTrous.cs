@@ -7,9 +7,13 @@ public class EnigmeFormeDansLesTrous : MonoBehaviour
 
     [SerializeField] GameObject[] ItemNeeded;
     [SerializeField] GameObject[] WallToDestroyed;
+    
+    bool dialogueExplanation;
+    
     // Start is called before the first frame update
     void Start()
     {
+         AudioManager.PlaySoundAtPosition("forme_beginning", transform.position);
         for(int i = 0 ; i < ItemNeeded.Length; i++)
         {
            

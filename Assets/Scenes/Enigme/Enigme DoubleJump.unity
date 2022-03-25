@@ -216,7 +216,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 5322241869790498710, guid: 5707faff5b183cb42803956e15bb172a, type: 3}
   PlayerSpawnPoint: {fileID: 976535819}
   PlayerEndgamePoint: {fileID: 504070242}
-  OOBLimit: -50
+  OOBLimit: -5
   _canEndgame: 1
   startText: In this level, you will test the double jump, for that, try do jump
     over the wall, and end the level.
@@ -940,25 +940,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1961236215}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1988151942 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5318725492660707815, guid: 0567adc641b6e5a43b9e8ec854cfe48b, type: 3}
-  m_PrefabInstance: {fileID: 2627901584771092861}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1988151947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1988151942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f96c2cdf712d7c6479f611e308ffc331, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  property: {fileID: 11400000, guid: 0d84fbc9fc88f14479299c0f056236b7, type: 2}
-  offset: {x: 0, y: 15, z: 0}
 --- !u!4 &2117035868 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ca430d735d661834184081c326f48e84, type: 3}
@@ -1199,6 +1180,10 @@ PrefabInstance:
     - target: {fileID: 8334778891036472639, guid: 6d8e4a41582581943a5fa75bf9299c4d, type: 3}
       propertyPath: m_Name
       value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8840851525651652411, guid: 6d8e4a41582581943a5fa75bf9299c4d, type: 3}
+      propertyPath: audioSourcePoolSize
+      value: 32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d8e4a41582581943a5fa75bf9299c4d, type: 3}

@@ -138,7 +138,7 @@ namespace StarterAssets
 		}
 		void PickupObject(GameObject pickObj)
 		{
-			AudioManager.PlaySoundAtPosition("dialogue_test",Vector3.zero);
+		
 			if(pickObj.TryGetComponent<Rigidbody>(out Rigidbody objRig))
 			{
 				objRig.useGravity = false;
@@ -315,13 +315,13 @@ namespace StarterAssets
 
 		private void JumpAndGravity()
 		{
-			Debug.Log("jumpCount "+jumpCount);
-			if(Grounded && jumpCount >= JumpMax)
-			{
-				jumpCount = 0;
-			}
+			
+			// if(Grounded && jumpCount >= JumpMax)
+			// {
+			// 	jumpCount = 0;
+			// }
 
-			if (Grounded || ( !Grounded && jumpCount < JumpMax) )
+			if (Grounded  )
 			{
 				
 				// reset the fall timeout timer
@@ -337,8 +337,8 @@ namespace StarterAssets
 				if (_input.jump && _jumpTimeoutDelta <= 0.0f)
 				{
 					jumpCount++;
-					if( ( !Grounded && jumpCount < JumpMax))
-						_input.jump = false;
+					// if( ( !Grounded && jumpCount < JumpMax))
+					// 	_input.jump = false;
 
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);

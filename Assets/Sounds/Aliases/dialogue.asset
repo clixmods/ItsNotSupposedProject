@@ -23,10 +23,10 @@ MonoBehaviour:
     bypassListenerEffects: 0
     bypassReverbZones: 0
     priority: 0
-    volume: 0
+    volume: 1
     isLooping: 0
-    minPitch: 0
-    maxPitch: 0
+    minPitch: 1
+    maxPitch: 1.1
     stereoPan: 0
     spatialBlend: 0
     reverbZoneMix: 0
@@ -42,4 +42,668 @@ MonoBehaviour:
       m_PostInfinity: 0
       m_RotationOrder: 0
     Text: 'Narrator: Hello I''m a big dick'
+    customDuration: 0
+  - name: hub_start
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: 80a18ff19d8e7f54d8e371a081e9e936, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : Hey! You! Yeah, you! Behind you, turn around, this is where
+      it happens.'
+    customDuration: 0
+  - name: hub_welcome
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: f76164a3760f3854c8e146ea1d1e6c95, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : Welcome to our game testing and configuration center! You
+      are our tester of the day! And congratulations to you, you''ve already passed
+      the first step, you''re one of the 40 percent of testers to have passed!'
+    customDuration: 0
+  - name: hub_mission
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: aa978b6c2415cd4459e8409e53631dc6, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : The mission is simple. You will help me, the developer, to
+      see if my game works properly and if it is ready to be played by the general
+      public!'
+    customDuration: 0
+  - name: hub_door
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: 709c2864a97ee9b4a8f34ccd9df0ca7e, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : There are several levels. You will go into each of them and
+      help me see if my features are working properly. You will be rewarded... Actually
+      thats wrong of course.'
+    customDuration: 0
+  - name: hub_door
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: 709c2864a97ee9b4a8f34ccd9df0ca7e, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : There are several levels. You will go into each of them and
+      help me see if my features are working properly. You will be rewarded... Actually
+      thats wrong of course.'
+    customDuration: 0
+  - name: plr_fall_0
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: fcda0f4f68e80974fbd56e4e9a8f0d50, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : The void is not part of this test.'
+    customDuration: 0
+  - name: plr_fall_1
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: 69463d7bc199c244c9a383b975611d22, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: "Developer : And you failed the first rule : \u201Cdon\u2019t die"
+    customDuration: 0
+  - name: plr_fall_2
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: 27a11d97c6aa983479177b5c112129d2, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: "Developer : My instructions may not be clear enough\u2026"
+    customDuration: 0
+  - name: plr_fall_3
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: b4d422272e7db984dbfe301c3c221c2d, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : Correct me if I''m wrong but you just fell'
+    customDuration: 0
+  - name: plr_fall_4
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: c0641fea84eb45a4bad2b0195e4f7e42, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: "Developer : I am adding, \u201Cplace safety barriers\u201D to my note."
+    customDuration: 0
+  - name: forme_beginning
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: da6aa86d215387444b87a060bf9f2fcf, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : Ok this level is quite easy, even human children would be
+      able to do it. And i''m not even talking about monkeys, which are the superior
+      species in my humble opinion.'
+    customDuration: 0
+  - name: forme_explication
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: b3c397d088e5f5848bab56e10406f4d7, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : The only thing you need to do is to take the shapes and put
+      them on the other side of the wall. Do not cheat please.'
+    customDuration: 0
+  - name: forme_cube_to_cube
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: e2743b5abf152c9459e7edbc58bd747d, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : Great, you are doing a good job buddy'
+    customDuration: 0
+  - name: forme_first_to_wrong_hole
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: 4dfa76fdf1b1d6f40a559fff07cd59d4, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : Uh, yeah, I guess you can do that.'
+    customDuration: 0
+  - name: forme_are_u_sure
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: ffaff7a10ad349048a5616aa53fb7e1a, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : Are you sure of what you are doing?'
+    customDuration: 0
+  - name: forme_take_your_time
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: 9bcea718ca58ec24988a5b2557181ca9, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : Ok take your time everything will be fine.'
+    customDuration: 0
+  - name: forme_be_proud
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: 6555c6e989a372e428409960a9c246e2, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : Yeah! You did it! Even if some people would have done better
+      than you, you can be proud'
+    customDuration: 0
+  - name: jump_beginning
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: b1881d767a272ba47aacf3f3b941e202, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : We''ll start slow, I''d like to test if the jumping mechanics
+      work well. Can you go to the other side of the wall so I can be sure?'
+    customDuration: 0
+  - name: jump_congrat
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: f23197438bcea1149925fce6fc6a1a08, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : Oh sorry, I wasn''t looking at my screen while you were running
+      the test. But I see you passed ! Congratulations, I will mark the jumping mechanic
+      as functional.'
+    customDuration: 0
+  - name: maze_beginning
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: c1cbed3db417cae4fa643fa0bbf0cbe5, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : Well... For this test I wanted to use mice but we are out
+      of cheese. So we chose you, you never ask for anything and you don''t cost
+      much in cheese.'
+    customDuration: 0
+  - name: maze_explication
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: 47aa604b7444f8a44901ed560aa289e5, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : You just have to go through the maze and get to the other
+      end.'
+    customDuration: 0
+  - name: maze_no_you_are_not
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: 381e077aa5892d948be352795ac7094c, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : Ah, you''re almost there...no, no you''re not.'
+    customDuration: 0
+  - name: maze_great
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: da7ffb704a150fe408db9a7ec55817df, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : Great ! You are smarter than a lab mouse! I didn''t expect
+      that! You may not be as cute as them but you certainly have their skills.'
     customDuration: 0
