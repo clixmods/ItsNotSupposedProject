@@ -35,7 +35,7 @@ public class PlayerManager : MonoBehaviour
         
     }
     private void FixedUpdate() {
-        Debug.LogError(death);
+        //Debug.LogError(death);
         if(transform.position.y < LevelManager.Util.GetOOBLimit() && !death )
         {
             death = true;

@@ -99,6 +99,8 @@ public class AudioManager : MonoBehaviour
 
     void InitAudioSources()
     {
+        audioSource = new List<GameObject>();
+
          for(int i = 0 ; i < audioSourcePoolSize; i++)
         {
             GameObject newAudioSource = new GameObject("Audio Source "+i);

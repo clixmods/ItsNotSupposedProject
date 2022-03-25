@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour
         {
             Util = this;
         }
-        Debug.LogError("Level Manager is on");
+//        Debug.LogError("Level Manager is on");
         GameObject Player = Instantiate(playerPrefab);
         PlayerManager playerManager = Player.GetComponentInChildren<PlayerManager>();
         FirstPersonController playerController = Player.GetComponentInChildren<FirstPersonController>();
