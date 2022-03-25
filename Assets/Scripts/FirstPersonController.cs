@@ -167,7 +167,7 @@ namespace StarterAssets
 
 
 				
-				//objRig.AddTorque(   new Vector3((_input.look.y *  rot.y * 10 ), (_input.look.x* rot.x * 10), 0), ForceMode.VelocityChange);
+				objRig.AddTorque(   new Vector3((_input.look.y *  rot.y * 10 ), (_input.look.x* rot.x * 10), 0), ForceMode.VelocityChange);
 				//Vector3 oof = objRig.rotation.eulerAngles + new Vector3( (_input.look.x * 10 ), (_input.look.y * 10), 0)  ;
 				//objRig.MoveRotation( Quaternion.LookRotation(oof) ) ;
 				// select the axis by which you want to rotate the GameObject
@@ -210,6 +210,9 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
+
+			Cursor.visible = false;
+			Cursor.lockState = CursorLockMode.Locked;
 		}
 
 		private void Update()
