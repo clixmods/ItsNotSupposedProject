@@ -21,7 +21,7 @@ using UnityEngine.Audio;
         [Range(-3,3)]
         public float minPitch = 1f;
         [Range(-3,3)]
-        public float maxPitch = 1f;
+        public float maxPitch = 1.01f;
         [Range(-1,1)]
         public float stereoPan = 0;
         [Range(0,1)]
@@ -40,6 +40,11 @@ using UnityEngine.Audio;
         public float MaxDistance = 500;
         public AudioRolloffMode CurveType = AudioRolloffMode.Logarithmic;
         public AnimationCurve distanceCurve = new AnimationCurve(new Keyframe[] { new Keyframe(0, 1), new Keyframe(1, 0) });
+
+        [Header("Subtitle")]
+        public string Text;
+        public float customDuration;
+
     }
 
 //[RequireComponent(typeof(AudioSource))]
@@ -123,7 +128,7 @@ public class AudioManager : MonoBehaviour
 
     void DisableInusedAudioSource()
     {
-          foreach(GameObject aS in audioSource)
+        foreach(GameObject aS in audioSource)
         {
             if(!aS.GetComponent<AudioSource>().isPlaying)
             {
@@ -163,7 +168,7 @@ public class AudioManager : MonoBehaviour
         Aliase clip = GetSoundByAliase(aliaseName);
         if( clip.audio.Length == 0)
         {
-            Debug.LogWarning("AudioManager : Aliase: "+aliaseName+" contains no sounds.");
+            Debug.LogError("AudioManager : Aliase: "+aliaseName+" contains no sounds.");
             return;
         }
         AudioSource audioS = GetAudioSource();
@@ -175,7 +180,9 @@ public class AudioManager : MonoBehaviour
         audioS.volume = clip.volume;
         audioS.loop = clip.isLooping;
         audioS.pitch = Random.Range(clip.minPitch, clip.maxPitch);
-        audioS.outputAudioMixerGroup = clip.MixerGroup;
+        if(clip.MixerGroup != null)
+            audioS.outputAudioMixerGroup = clip.MixerGroup;
+
         switch(clip.CurveType)
         {
             case AudioRolloffMode.Logarithmic:
@@ -194,9 +201,16 @@ public class AudioManager : MonoBehaviour
         {
             audioS.clip = clip.audio[Random.Range(0,clip.audio.Length)];
             audioS.Play();
+
         }
         else
-            audioS.PlayOneShot(clip.audio[Random.Range(0,clip.audio.Length)]);
+        {
+            audioS.PlayOneShot(clip.audio[Random.Range(0,clip.audio.Length)], clip.volume);
+             //audioS.clip = clip.audio[0];
+             //audioS.Play();
+            UIManager.CreateSubtitle(clip.Text);
+            
+        }
         
 
     } 
@@ -204,6 +218,8 @@ public class AudioManager : MonoBehaviour
     {
         
     }
+
+    
 }
 
 

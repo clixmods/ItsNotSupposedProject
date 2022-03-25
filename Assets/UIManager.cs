@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -9,7 +10,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] static GameObject MessageBox;
     [SerializeField] static GameObject InputBox;
     [SerializeField] static GameObject ClientBox;
+
+
     
+    [Header("SUBTITLE")]
+    [SerializeField] TMP_Text subtitleComponent;
+    static float _durationSubtitle;
+    static TMP_Text subtitleCompo;
 
     [Header("HINTSTRING")]
     [SerializeField] Vector3 offset = new Vector3(0, 15, 0);
@@ -24,6 +31,8 @@ public class UIManager : MonoBehaviour
         HintstringList.transform.parent = transform;
         HintstringList.transform.SetSiblingIndex(0);
 
+        subtitleCompo = subtitleComponent;
+
     }
 
     // Start is called before the first frame update
@@ -36,6 +45,7 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         UpdateHintstring();
+        UpdateSubtitle();
     }
 
     void UpdateHintstring()
@@ -56,7 +66,50 @@ public class UIManager : MonoBehaviour
 
     }
 
+    void UpdateSubtitle()
+    {
+        if(_durationSubtitle > 0)
+        {
+            _durationSubtitle -= Time.deltaTime;
+            subtitleCompo.alpha = 1;
+
+        }
+        else
+            subtitleCompo.alpha = 0;
+    }
+
+    /*
+        This function will create a hintstring at the top of your desired gameobject, if the gameobject is deleted
+        the hintstring will be deleted too (in HintstringProperty.cs)
+    */
+    public static void CreateSubtitle(string message = "Name: Hello I'm a subtitle text", float duration = 10f)
+    {
+        subtitleCompo.text = message;
+        _durationSubtitle = duration;
+        // if(aGameObject == null)
+        // {
+        //     Debug.Log("Attempt to create a hintstring on a non existant object (message : "+message);
+        //     return null;
+        // }
+        // GameObject hintString = Instantiate(MessageBox, aGameObject.transform.position, Quaternion.identity, HintstringList.transform);
+        // HintstringProperty component = hintString.GetComponent<HintstringProperty>();
+        // component.relatedObject = aGameObject;
+        // component.MinDistance = minDistance;
+        // component.setting = SettingHintstring.AlwaysShow;
+        // component.textComponent.text = message;
+        // if(icon == null)
+        // {
+        //     component.icon.color = new Color(0,0,0,0);
+        // }
+        // else
+        //     component.icon.sprite = icon;
+
+        // return component;
+    }
     
+
+
+
     /*
         This function will create a hintstring at the top of your desired gameobject, if the gameobject is deleted
         the hintstring will be deleted too (in HintstringProperty.cs)

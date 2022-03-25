@@ -27,18 +27,17 @@ public class LevelManager : MonoBehaviour
         {
             Util = this;
         }
-
+        Debug.LogError("Level Manager is on");
         GameObject Player = Instantiate(playerPrefab);
-        //s_player = Player.transform;
         PlayerManager playerManager = Player.GetComponentInChildren<PlayerManager>();
         FirstPersonController playerController = Player.GetComponentInChildren<FirstPersonController>();
         playerController.JumpHeight = LevelPlayerSettings.JumpHeight;
         playerController.JumpMax = LevelPlayerSettings.MaxJump;
         _player = playerManager.transform;
         playerManager.PlayerSettings = LevelPlayerSettings;
-
-        Player.transform.position = PlayerSpawnPoint.transform.position;
-
+        playerController.enabled = false;
+        playerController.transform.position = PlayerSpawnPoint.transform.position;
+        playerController.enabled = true;
         UIManager.CreateHintString(PlayerEndgamePoint.gameObject, startText ,6666 );
     }
     public bool CanEndgame
@@ -65,7 +64,8 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_player.position.y < OOBLimit)
-            _player.GetComponent<PlayerManager>().death = true;
+    
+     
+            
     }
 }
