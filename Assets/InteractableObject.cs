@@ -88,7 +88,7 @@ public class InteractableObject : MonoBehaviour
         	_rb.freezeRotation = false;
 			Vector3 rot = transform.position - Player.transform.position;
 	
-			_rb.AddTorque(   new Vector3((_input.look.y *  rot.y * 10 ), (_input.look.x* rot.x * 10), 0), ForceMode.VelocityChange);
+			_rb.AddTorque(   new Vector3((_input.look.y *  rot.y * 10 ), (_input.look.x* rot.x * 10), 0), ForceMode.Impulse);
 
 				//Vector3 oof = objRig.rotation.eulerAngles + new Vector3( (_input.look.x * 10 ), (_input.look.y * 10), 0)  ;
 				//objRig.MoveRotation( Quaternion.LookRotation(oof) ) ;

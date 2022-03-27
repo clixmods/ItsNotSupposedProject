@@ -79,14 +79,10 @@ public class InteractablePendule : InteractableObject
     public override void PickupBehavior()
     {
         isGrabbed = true;
-		//_rb.useGravity = false;
-		//_rb.drag = 10;
     }
     public override void DropBehavior()
     {
-		isGrabbed = false;
-		//_rb.useGravity = true;
-		//_rb.drag = 1;		
+		isGrabbed = false;	
     }
 
     public override void Triggered()

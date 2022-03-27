@@ -8,12 +8,18 @@ public class EnigmeFormeDansLesTrous : MonoBehaviour
     [SerializeField] GameObject[] ItemNeeded;
     [SerializeField] GameObject[] WallToDestroyed;
     
-    bool dialogueExplanation;
-    
+    [Header("Event Dialogue")]
+    [SerializeField]bool dialogueExplanation;
+    [SerializeField]bool cubePosed;
+    [SerializeField]bool formPosed;
+    [SerializeField]bool formPosedB;
+    [SerializeField] float timeAnnoying = 30;
+    [SerializeField] float timer;
+
     // Start is called before the first frame update
     void Start()
     {
-         AudioManager.PlaySoundAtPosition("forme_beginning", transform.position);
+         
         for(int i = 0 ; i < ItemNeeded.Length; i++)
         {
            
@@ -29,7 +35,8 @@ public class EnigmeFormeDansLesTrous : MonoBehaviour
         for(int i = 0 ; i < ItemNeeded.Length; i++)
         {
             if(ItemNeeded[i] == null)
-            {
+            {   
+                
                 finished = true;
             }
             else
@@ -38,6 +45,29 @@ public class EnigmeFormeDansLesTrous : MonoBehaviour
                 break;
             }
         }
+        for(int i = 0 ; i < ItemNeeded.Length; i++)
+        {
+            if(ItemNeeded[i] == null)
+            { 
+                if(i == 0 && !cubePosed)
+                {
+                    AudioManager.PlaySoundAtPosition("forme_cube_to_cube",transform.position);
+                    cubePosed = true;
+                }   
+                if(i != 0 && !formPosed) 
+                {
+                    AudioManager.PlaySoundAtPosition("forme_first_to_wrong_hole",transform.position);
+                    formPosed = true;
+                }
+                if(i != 0 && formPosed && !formPosedB)
+                {
+                    AudioManager.PlaySoundAtPosition("forme_are_u_sure", transform.position);
+                    formPosedB = true;
+                }
+            }
+        }
+
+
         //Debug.Log("Challenge state : "+finished);
         if(finished == true && !LevelManager.Util.CanEndgame)
         {
@@ -48,7 +78,15 @@ public class EnigmeFormeDansLesTrous : MonoBehaviour
             }
         }
             
-
+        if(timer <= timeAnnoying)
+        {
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            AudioManager.PlaySoundAtPosition("forme_take_your_time", transform.position);
+            timer = 0;
+        }
     }
     void OnTriggerStay(Collider other)
     {
