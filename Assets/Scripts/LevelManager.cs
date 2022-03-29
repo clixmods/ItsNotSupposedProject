@@ -44,10 +44,13 @@ public class LevelManager : MonoBehaviour
         GameObject Player = Instantiate(LevelData.PlayerPrefab);
         PlayerManager playerManager = Player.GetComponentInChildren<PlayerManager>();
         FirstPersonController playerController = Player.GetComponentInChildren<FirstPersonController>();
+
+
         playerController.JumpHeight = LevelData.LevelPlayerSetting.JumpHeight;
         playerController.JumpMax = LevelData.LevelPlayerSetting.MaxJump;
         _player = playerManager.transform;
         playerManager.PlayerSettings = LevelData.LevelPlayerSetting;
+        playerController.PlayerSettings= LevelData.LevelPlayerSetting;
 
         // On desactive le playerController car empeche de faire un set positions
         playerController.enabled = false;

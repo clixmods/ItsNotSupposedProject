@@ -21,4 +21,7 @@ public class PlayerDataObject : ScriptableObject
 
     public int MaxJump = 1;
     public float JumpHeight = 1;
+
+    [Tooltip("What layers the character uses as ground")]
+	public LayerMask GroundLayers;
 }
