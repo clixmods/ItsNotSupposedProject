@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: Portal Trigger
   PreviewImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   isUnlocked: 0
-  sceneName: Default
+  sceneName: Enigme TriggerCube
   LevelPlayerSetting: {fileID: 11400000, guid: d4c2c73232f9bfc4fb263bf733e17729, type: 2}
   PlayerPrefab: {fileID: 5322241869790498710, guid: 5707faff5b183cb42803956e15bb172a, type: 3}
   OOBLimit: -3

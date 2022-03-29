@@ -191,7 +191,7 @@ namespace StarterAssets
 
 			Cursor.visible = false;
 			Cursor.lockState = CursorLockMode.Locked;
-
+			if(PlayerSettings != null)
 			GroundLayers = PlayerSettings.GroundLayers;
 		}
 
