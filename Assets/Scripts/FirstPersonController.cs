@@ -13,6 +13,8 @@ namespace StarterAssets
 	public class FirstPersonController : MonoBehaviour
 	{
 		[Header("Player")]
+		public PlayerDataObject PlayerSettings;
+
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 4.0f;
 		[Tooltip("Sprint speed of the character in m/s")]
@@ -109,9 +111,10 @@ namespace StarterAssets
 						if(hit.transform.TryGetComponent<InteractableObject>(out InteractableObject obj))
 						{
 
-							Debug.Log("Object grabbeb attemp : "+hit.transform.name);
-							if(obj.Grabable)
+							
 								PickupObject(hit.transform.gameObject);
+									if(obj.Grabable)
+										heldObj = hit.transform.gameObject;	
 
 						}
 					}
@@ -149,7 +152,6 @@ namespace StarterAssets
 		void PickupObject(GameObject pickObj)
 		{
 			pickObj.GetComponent<InteractableObject>().PickupBehavior();
-			heldObj = pickObj;	
 		}
 		void DropObject()
 		{
@@ -189,6 +191,8 @@ namespace StarterAssets
 
 			Cursor.visible = false;
 			Cursor.lockState = CursorLockMode.Locked;
+			if(PlayerSettings != null)
+			GroundLayers = PlayerSettings.GroundLayers;
 		}
 
 		private void Update()
