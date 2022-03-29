@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Enigme/Enigme Labyrinthe.unity
     guid: 5a8cd04cb93e298449fdb4af69f85a55
   - enabled: 1
+    path: Assets/Scenes/Enigme/Enigme Platform theo.unity
+    guid: cceb83f7fd4e0ea459de18a7036a46c8
+  - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 0e986af593e8505418fc799c6471e956
   m_configObjects:

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using StarterAssets;
-
+using UnityEngine.Events;
 public class LevelManager : MonoBehaviour
 {
     public RoomTestObject LevelData;
@@ -21,6 +21,12 @@ public class LevelManager : MonoBehaviour
     bool endgameTriggered;
     Transform _player;
 
+
+    
+    [Tooltip("undefined")]
+    public UnityAction Test;
+      public UnityAction action;
+    public UnityEvent myEvent;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,16 +57,22 @@ public class LevelManager : MonoBehaviour
         // Crée une boite de dialogue sur le monde 3D
         UIManager.CreateHintString(PlayerEndgamePoint.gameObject, LevelData.Description ,6666 );
         // Joue le dialogue de début de partie
-        Aliase snd = AudioManager.PlaySoundAtPosition(LevelData.StartingDialogue, transform.position);
-        if(LevelData.ExplanationDialogue != null)
-            durationToNextExplanatation = snd.audio[0].length;
+        if(LevelData.StartingDialogue != "")
+        {
+            Aliase snd = AudioManager.PlaySoundAtPosition(LevelData.StartingDialogue, transform.position);
 
-        Aliase sndEndgame = AudioManager.GetSoundByAliase(LevelData.EndgameDialogue);
-        if(sndEndgame != null)
-            endgameCooldown = sndEndgame.audio[0].length+1;
+            if(LevelData.ExplanationDialogue != "")
+                durationToNextExplanatation = snd.audio[0].length;
+
+            Aliase sndEndgame = AudioManager.GetSoundByAliase(LevelData.EndgameDialogue);
+            if(sndEndgame != null)
+                endgameCooldown = sndEndgame.audio[0].length+1;
+        }
+        
 
         _canEndgame = LevelData.CanEndgame;
 
+        LevelData.myEvent.Invoke();
     }
 
     // Permet de savoir sur le joueur peut sortir du niveau

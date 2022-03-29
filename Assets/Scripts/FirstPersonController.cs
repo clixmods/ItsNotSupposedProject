@@ -58,9 +58,9 @@ namespace StarterAssets
 		[SerializeField] float _cinemachineTargetPitch;
 
 		// player
-		private float _speed;
+		protected float _speed;
 		private float _rotationVelocity;
-		private float _verticalVelocity;
+		protected float _verticalVelocity;
 		private float _terminalVelocity = 53.0f;
 		private int jumpCount = 0;
 
@@ -69,8 +69,8 @@ namespace StarterAssets
 		private float _fallTimeoutDelta;
 
 		private PlayerInput _playerInput;
-		private CharacterController _controller;
-		private StarterAssetsInputs _input;
+		protected CharacterController _controller;
+		[SerializeField] protected StarterAssetsInputs _input;
 		private GameObject _mainCamera;
 
 		private const float _threshold = 0.01f;
@@ -88,7 +88,11 @@ namespace StarterAssets
 		public float moveForce = 250;
 
 		// Player property
-		
+		public StarterAssetsInputs Input
+		{
+			get{ return _input ;}
+			set{ _input = value;}
+		}
 
 		void WatchPickup()
 		{		
@@ -158,32 +162,11 @@ namespace StarterAssets
 		{
 			if(heldObj.TryGetComponent<Rigidbody>(out Rigidbody objRig))
 			{
-				
-				objRig.AddTorque(   new Vector3((_input.look.y *  rot.y * 10 ), (_input.look.x* rot.x * 10), 0), ForceMode.VelocityChange);
-				//Vector3 oof = objRig.rotation.eulerAngles + new Vector3( (_input.look.x * 10 ), (_input.look.y * 10), 0)  ;
-				//objRig.MoveRotation( Quaternion.LookRotation(oof) ) ;
-				// select the axis by which you want to rotate the GameObject
-				//objRig.transform.RotateAround (Vector3.down, _input.look.x);
-				//objRig.transform.RotateAround (Vector3.right, _input.look.y);
-
-
-
-				/*
-					float rotationSpeed = 0.2f;
- 
-	void OnMouseDrag()
-	{
-		float XaxisRotation = Input.GetAxis("Mouse X")*rotationSpeed;
-		float YaxisRotation = Input.GetAxis("Mouse Y")*rotationSpeed;
-		// select the axis by which you want to rotate the GameObject
-		transform.RotateAround (Vector3.down, XaxisRotation);
-		transform.RotateAround (Vector3.right, YaxisRotation);
-	}
-				*/	
+			
 			}
 		}
 
-
+		// When the Gameobject is waked
 		private void Awake()
 		{
 			// get a reference to our main camera
@@ -196,7 +179,8 @@ namespace StarterAssets
 		private void Start()
 		{
 			_controller = GetComponent<CharacterController>();
-			_input = GetComponent<StarterAssetsInputs>();
+			if(_input == null) // si jamais on l'a setup avant
+				_input = GetComponent<StarterAssetsInputs>();
 			_playerInput = GetComponent<PlayerInput>();
 
 			// reset our timeouts on start
@@ -268,8 +252,9 @@ namespace StarterAssets
 			}
 		}
 
-		private void Move()
+		public virtual void Move()
 		{
+			
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
@@ -312,7 +297,7 @@ namespace StarterAssets
 			}
 
 			// move the player
-			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+				_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 		}
 
 		private void JumpAndGravity()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "Level Data", menuName = "RoomTest/Level", order = 1)]
 public class RoomTestObject : ScriptableObject
@@ -34,4 +35,8 @@ public class RoomTestObject : ScriptableObject
      [Tooltip("Endgame dialogue")]
     public string EndgameDialogue;
 
+    [Tooltip("undefined")]
+    public UnityAction Test;
+      public UnityAction action;
+    public UnityEvent myEvent;
 }
