@@ -57,7 +57,8 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] int audioSourcePoolSize = 32; // 32 is a good start
     [Header("Debug")] 
-     [SerializeField]  Aliases[] TableAliasesLoaded = new Aliases[0];
+    [SerializeField]  Aliases[] TableAliasesLoaded = new Aliases[0];
+
 
     // Add aliases to load
     public static void AddAliases(Aliases newAliases)
@@ -89,7 +90,7 @@ public class AudioManager : MonoBehaviour
             Util = this;
         }      
         else
-            Destroy(gameObject);
+            DestroyImmediate(gameObject);
 
 
         DontDestroyOnLoad(gameObject);
@@ -99,6 +100,8 @@ public class AudioManager : MonoBehaviour
 
     void InitAudioSources()
     {
+        audioSource = new List<GameObject>();
+
          for(int i = 0 ; i < audioSourcePoolSize; i++)
         {
             GameObject newAudioSource = new GameObject("Audio Source "+i);
@@ -137,7 +140,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    static Aliase GetSoundByAliase(string name)
+    public static Aliase GetSoundByAliase(string name)
     {
         for(int i = 0 ; i < aliasesArray.Length; i++)
         {
@@ -162,20 +165,24 @@ public class AudioManager : MonoBehaviour
         }
         return null;
     }
+    public static void PlayMultiplesAtPosition(string[] aliasesName, Vector3 position, bool waitFinish = true)
+    {
 
-    public static void PlaySoundAtPosition(string aliaseName, Vector3 position)
+    }
+
+    public static Aliase PlaySoundAtPosition(string aliaseName, Vector3 position)
     {
         Aliase clip = GetSoundByAliase(aliaseName);
-        if( clip.audio.Length == 0)
+        if( clip == null || clip.audio.Length == 0)
         {
             Debug.LogError("AudioManager : Aliase: "+aliaseName+" contains no sounds.");
-            return;
+            return null;
         }
         AudioSource audioS = GetAudioSource();
         if(audioS == null)
         {
             Debug.LogWarning($"AudioManager : Limits exceded for audioSource, maybe you need to increase your audioSourcePoolSize (Size = {Util.audioSourcePoolSize})");
-            return;
+            return null;
         }
         audioS.volume = clip.volume;
         audioS.loop = clip.isLooping;
@@ -211,6 +218,7 @@ public class AudioManager : MonoBehaviour
             UIManager.CreateSubtitle(clip.Text);
             
         }
+        return clip;
         
 
     } 
@@ -218,6 +226,8 @@ public class AudioManager : MonoBehaviour
     {
         
     }
+
+    
 
     
 }

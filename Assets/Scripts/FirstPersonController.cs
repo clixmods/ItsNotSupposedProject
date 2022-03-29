@@ -58,9 +58,9 @@ namespace StarterAssets
 		[SerializeField] float _cinemachineTargetPitch;
 
 		// player
-		private float _speed;
+		protected float _speed;
 		private float _rotationVelocity;
-		private float _verticalVelocity;
+		protected float _verticalVelocity;
 		private float _terminalVelocity = 53.0f;
 		private int jumpCount = 0;
 
@@ -69,8 +69,8 @@ namespace StarterAssets
 		private float _fallTimeoutDelta;
 
 		private PlayerInput _playerInput;
-		private CharacterController _controller;
-		private StarterAssetsInputs _input;
+		protected CharacterController _controller;
+		[SerializeField] protected StarterAssetsInputs _input;
 		private GameObject _mainCamera;
 
 		private const float _threshold = 0.01f;
@@ -80,7 +80,7 @@ namespace StarterAssets
 
 		// Pickup property
 		[Tooltip("How far the player can take the object")]
-		[SerializeField] float maxDistanceToPickupObject = 5; 
+		[SerializeField] float maxDistanceToPickupObject = 5000; 
 		[Tooltip("Where the object will be move, when the player take it")]
 		public Transform pickedObjectStartPos;
 		private GameObject heldObj;
@@ -88,19 +88,28 @@ namespace StarterAssets
 		public float moveForce = 250;
 
 		// Player property
-		
+		public StarterAssetsInputs Input
+		{
+			get{ return _input ;}
+			set{ _input = value;}
+		}
 
 		void WatchPickup()
-		{
+		{		
+			Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 10, Color.yellow);
+
 			if(_input.interact)
 			{
 				if(heldObj == null)
 				{
 					RaycastHit hit;
-					if(Physics.Raycast(transform.position , transform.TransformDirection(Vector3.forward) , out hit , maxDistanceToPickupObject ))
+					if(Physics.Raycast(Camera.main.transform.position , Camera.main.transform.TransformDirection(Vector3.forward) , out hit , maxDistanceToPickupObject  ))
 					{
+						Debug.Log("Objectt Attempt");
 						if(hit.transform.TryGetComponent<InteractableObject>(out InteractableObject obj))
 						{
+
+							Debug.Log("Object grabbeb attemp : "+hit.transform.name);
 							if(obj.Grabable)
 								PickupObject(hit.transform.gameObject);
 
@@ -109,6 +118,7 @@ namespace StarterAssets
 				}
 				else
 				{
+					Debug.Log("Objectt dropped");
 					DropObject();
 				}
 			}
@@ -138,22 +148,12 @@ namespace StarterAssets
 		}
 		void PickupObject(GameObject pickObj)
 		{
-		
-			if(pickObj.TryGetComponent<Rigidbody>(out Rigidbody objRig))
-			{
-				objRig.useGravity = false;
-				objRig.drag = 10;
-				objRig.GetComponent<InteractableObject>().isGrabbed = true;
-				heldObj = pickObj;
-			}
+			pickObj.GetComponent<InteractableObject>().PickupBehavior();
+			heldObj = pickObj;	
 		}
 		void DropObject()
 		{
-
-			Rigidbody heldRig = heldObj.GetComponent<Rigidbody>();
-			heldObj.GetComponent<InteractableObject>().isGrabbed = false;
-			heldRig.useGravity = true;
-			heldRig.drag = 1;
+			heldObj.GetComponent<InteractableObject>().DropBehavior();
 			heldObj = null;
 		}
 
@@ -162,36 +162,11 @@ namespace StarterAssets
 		{
 			if(heldObj.TryGetComponent<Rigidbody>(out Rigidbody objRig))
 			{
-				objRig.freezeRotation = false;
-				Vector3 rot = heldObj.transform.position - transform.position;
-
-
-				
-				objRig.AddTorque(   new Vector3((_input.look.y *  rot.y * 10 ), (_input.look.x* rot.x * 10), 0), ForceMode.VelocityChange);
-				//Vector3 oof = objRig.rotation.eulerAngles + new Vector3( (_input.look.x * 10 ), (_input.look.y * 10), 0)  ;
-				//objRig.MoveRotation( Quaternion.LookRotation(oof) ) ;
-				// select the axis by which you want to rotate the GameObject
-				//objRig.transform.RotateAround (Vector3.down, _input.look.x);
-				//objRig.transform.RotateAround (Vector3.right, _input.look.y);
-
-
-
-				/*
-					float rotationSpeed = 0.2f;
- 
-	void OnMouseDrag()
-	{
-		float XaxisRotation = Input.GetAxis("Mouse X")*rotationSpeed;
-		float YaxisRotation = Input.GetAxis("Mouse Y")*rotationSpeed;
-		// select the axis by which you want to rotate the GameObject
-		transform.RotateAround (Vector3.down, XaxisRotation);
-		transform.RotateAround (Vector3.right, YaxisRotation);
-	}
-				*/	
+			
 			}
 		}
 
-
+		// When the Gameobject is waked
 		private void Awake()
 		{
 			// get a reference to our main camera
@@ -204,7 +179,8 @@ namespace StarterAssets
 		private void Start()
 		{
 			_controller = GetComponent<CharacterController>();
-			_input = GetComponent<StarterAssetsInputs>();
+			if(_input == null) // si jamais on l'a setup avant
+				_input = GetComponent<StarterAssetsInputs>();
 			_playerInput = GetComponent<PlayerInput>();
 
 			// reset our timeouts on start
@@ -221,17 +197,24 @@ namespace StarterAssets
 			GroundedCheck();
 			Move();
 
-			WatchPickup();
+			
 
 			
 			
 		}
 		private void FixedUpdate()
 		{
-			if (_input.rotate && heldObj != null) //we only want to begin this process on the initial click, as Imtiaj noted
+			WatchPickup();
+			if(heldObj != null)
 			{
-				ChangeRotationTarget();
+				if (_input.rotate ) //we only want to begin this process on the initial click
+				{
+					heldObj.GetComponent<InteractableObject>().RotateBehavior(transform, _input);
+				}
+				else
+					heldObj.GetComponent<Rigidbody>().freezeRotation = true;
 			}
+			
 		}
 
 		private void LateUpdate()
@@ -269,8 +252,9 @@ namespace StarterAssets
 			}
 		}
 
-		private void Move()
+		public virtual void Move()
 		{
+			
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
@@ -313,7 +297,7 @@ namespace StarterAssets
 			}
 
 			// move the player
-			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+				_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 		}
 
 		private void JumpAndGravity()

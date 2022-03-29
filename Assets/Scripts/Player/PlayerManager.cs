@@ -35,17 +35,14 @@ public class PlayerManager : MonoBehaviour
         
     }
     private void FixedUpdate() {
-        Debug.LogError(death);
         if(transform.position.y < LevelManager.Util.GetOOBLimit() && !death )
         {
             death = true;
-            Debug.LogWarning("Fuck");
             _isFalling=true;
-            
         }
         WatchHealth();
     }
-
+    // This function check the health of the player
     void WatchHealth()
     {
         if (poison)
@@ -102,7 +99,6 @@ public class PlayerManager : MonoBehaviour
     {
         if(other.gameObject.layer == 6)
         {
-            Debug.Log("Player touch the trigger");
             poison = true;
         }
     }
@@ -110,7 +106,6 @@ public class PlayerManager : MonoBehaviour
     {
         if (other.gameObject.layer == 7)
         {
-            Debug.Log("Player dont touch the trigger");
             poison = false;
             timePoison = PlayerSettings.timePoison;
         }
