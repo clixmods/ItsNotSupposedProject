@@ -30,6 +30,11 @@ public class LevelManager : MonoBehaviour
             Util = this;
         }
 
+        if(LevelData == null)
+        {
+            Debug.LogError("Attention le LevelData dans le levelManager de la scène n'a pas été configuré !");
+        }
+
         GameObject Player = Instantiate(LevelData.PlayerPrefab);
         PlayerManager playerManager = Player.GetComponentInChildren<PlayerManager>();
         FirstPersonController playerController = Player.GetComponentInChildren<FirstPersonController>();
@@ -54,6 +59,8 @@ public class LevelManager : MonoBehaviour
         if(sndEndgame != null)
             endgameCooldown = sndEndgame.audio[0].length+1;
 
+        _canEndgame = LevelData.CanEndgame;
+
     }
 
     // Permet de savoir sur le joueur peut sortir du niveau
@@ -75,6 +82,7 @@ public class LevelManager : MonoBehaviour
     // Renvoi au menu principal
     public void Endgame()
     {
+        
         AudioManager.PlaySoundAtPosition(LevelData.EndgameDialogue, transform.position);
         endgameTriggered = true;
     }
@@ -94,15 +102,17 @@ public class LevelManager : MonoBehaviour
                 durationToNextExplanatation = -1;
             }
         }
-        
-        if(endgameTriggered && endgameCooldown >= 0)
-        {
-            endgameCooldown -= Time.deltaTime;
+        if(endgameTriggered){
+             if(endgameCooldown >= 0)
+            {
+                endgameCooldown -= Time.deltaTime;
+            }
+            else
+            {
+                SceneManager.LoadScene("MenuStart");
+            }
         }
-        else
-        {
-             SceneManager.LoadScene("MenuStart");
-        }
+       
             
     }
 }

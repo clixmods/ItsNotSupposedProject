@@ -22,3 +22,5 @@ MonoBehaviour:
   OOBLimit: -3
   CanEndgame: 0
   StartingDialogue: forme_beginning
+  ExplanationDialogue: forme_explication
+  EndgameDialogue: forme_be_proud

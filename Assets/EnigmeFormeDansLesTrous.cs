@@ -13,7 +13,7 @@ public class EnigmeFormeDansLesTrous : MonoBehaviour
     [SerializeField]bool cubePosed;
     [SerializeField]bool formPosed;
     [SerializeField]bool formPosedB;
-    [SerializeField] float timeAnnoying = 30;
+    [SerializeField] float timeAnnoying = 45;
     [SerializeField] float timer;
 
     // Start is called before the first frame update
@@ -67,9 +67,7 @@ public class EnigmeFormeDansLesTrous : MonoBehaviour
             }
         }
 
-
-        //Debug.Log("Challenge state : "+finished);
-        if(finished == true && !LevelManager.Util.CanEndgame)
+        if(finished && !LevelManager.Util.CanEndgame)
         {
             LevelManager.Util.CanEndgame = true;
             for(int i = 0 ; i < WallToDestroyed.Length; i++)
@@ -77,16 +75,21 @@ public class EnigmeFormeDansLesTrous : MonoBehaviour
                 WallToDestroyed[i].SetActive(false);
             }
         }
+
+        if(!finished)
+        {   
+            if(timer <= timeAnnoying)
+            {
+                timer += Time.deltaTime;
+            }
+            else
+            {
+                AudioManager.PlaySoundAtPosition("forme_take_your_time", transform.position);
+                timer = 0;
+            }
+        }
             
-        if(timer <= timeAnnoying)
-        {
-            timer += Time.deltaTime;
-        }
-        else
-        {
-            AudioManager.PlaySoundAtPosition("forme_take_your_time", transform.position);
-            timer = 0;
-        }
+      
     }
     void OnTriggerStay(Collider other)
     {

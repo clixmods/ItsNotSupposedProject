@@ -173,7 +173,7 @@ public class AudioManager : MonoBehaviour
     public static Aliase PlaySoundAtPosition(string aliaseName, Vector3 position)
     {
         Aliase clip = GetSoundByAliase(aliaseName);
-        if( clip.audio.Length == 0)
+        if( clip == null || clip.audio.Length == 0)
         {
             Debug.LogError("AudioManager : Aliase: "+aliaseName+" contains no sounds.");
             return null;
@@ -226,6 +226,8 @@ public class AudioManager : MonoBehaviour
     {
         
     }
+
+    
 
     
 }
