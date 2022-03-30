@@ -20,3 +20,6 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 129
+  DangerousLayers:
+    serializedVersion: 2
+    m_Bits: 128
