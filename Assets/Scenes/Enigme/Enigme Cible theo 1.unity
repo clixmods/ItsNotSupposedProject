@@ -917,7 +917,7 @@ GameObject:
   - component: {fileID: 868110064}
   - component: {fileID: 868110063}
   - component: {fileID: 868110062}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Sol
   m_TagString: Untagged
   m_Icon: {fileID: 0}

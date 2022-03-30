@@ -16,6 +16,7 @@ namespace StarterAssets
 		public bool rotate;
 		public bool RotateUp;
 		public bool RotateRight;
+		public bool shoot;
 		public Vector2 mousePosition;
 
 		[Header("Movement Settings")]
@@ -44,6 +45,12 @@ namespace StarterAssets
 		public void OnJump(InputValue value)
 		{
 			JumpInput(value.isPressed);
+		}
+
+		// New input for shoot 
+		public void OnShoot(InputValue value)
+		{
+			ShootInput(value.isPressed);
 		}
 
 		public void OnInteract(InputValue value)
@@ -98,6 +105,12 @@ namespace StarterAssets
 		public void InteractInput(bool newInteractState)
 		{
 			interact = newInteractState;
+		}
+
+		public void ShootInput(bool newShootState)
+		{
+			shoot = newShootState;
+			Debug.Log("Shoot state : "+shoot);
 		}
 
 		public void SprintInput(bool newSprintState)
