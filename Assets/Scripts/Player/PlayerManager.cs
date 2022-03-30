@@ -17,6 +17,8 @@ public class PlayerManager : MonoBehaviour
 
     public bool poison = false;
     public float timePoison = 1;
+
+
    
 
     // Start is called before the first frame update
@@ -52,7 +54,10 @@ public class PlayerManager : MonoBehaviour
             float GroundedRadius = 0.5f;
 			// set sphere position, with offset
 			Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
-			poison = Physics.CheckSphere(spherePosition, GroundedRadius, 7, QueryTriggerInteraction.Ignore);
+		
+            poison = Physics.CheckSphere(spherePosition, GroundedRadius, PlayerSettings.DangerousLayers, QueryTriggerInteraction.Ignore);
+        
+            
 		}
     // This function check the health of the player
     void WatchHealth()

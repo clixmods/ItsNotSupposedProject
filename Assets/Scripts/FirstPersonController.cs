@@ -98,14 +98,14 @@ namespace StarterAssets
 
 		void WatchPickup()
 		{		
-			Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 10, Color.yellow);
+			Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * maxDistanceToPickupObject, Color.yellow);
 
 			if(_input.interact)
 			{
 				if(heldObj == null)
 				{
 					RaycastHit hit;
-					if(Physics.Raycast(Camera.main.transform.position , Camera.main.transform.TransformDirection(Vector3.forward) , out hit , maxDistanceToPickupObject  ))
+					if(Physics.Raycast(Camera.main.transform.position , Camera.main.transform.TransformDirection(Vector3.forward)*maxDistanceToPickupObject , out hit , maxDistanceToPickupObject  ))
 					{
 						Debug.Log("Objectt Attempt");
 						if(hit.transform.TryGetComponent<InteractableObject>(out InteractableObject obj))
@@ -135,7 +135,7 @@ namespace StarterAssets
 		void MoveObject()
 		{
 			// On check si l'objet est trop loin lorsque le joueur le tien, si c'est trop loin on le drop
-			float maxDistance = 5f;
+			float maxDistance = maxDistanceToPickupObject + 5f;
 			if( Vector3.Distance(transform.position, heldObj.transform.position) > maxDistance)
 			{
 				DropObject();
@@ -192,7 +192,11 @@ namespace StarterAssets
 			Cursor.visible = false;
 			Cursor.lockState = CursorLockMode.Locked;
 			if(PlayerSettings != null)
-			GroundLayers = PlayerSettings.GroundLayers;
+			{
+				GroundLayers = PlayerSettings.GroundLayers;
+				maxDistanceToPickupObject = PlayerSettings.maxDistanceToGrab;
+			}
+
 		}
 
 		private void Update()
