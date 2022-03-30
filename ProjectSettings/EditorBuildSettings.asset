@@ -6,7 +6,34 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/URP Assets/Scenes/SceneBenji.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: Assets/Scenes/MenuStart.unity
+    guid: 76bf2a83551997b488495636294a3545
+  - enabled: 1
+    path: Assets/Scenes/Enigme/Enigme DoubleJump.unity
+    guid: 2ed30d82e86f2854aaa5018e7171463c
+  - enabled: 1
+    path: Assets/Scenes/Enigme/Enigme Forme.unity
+    guid: d32b26b575946904fa4da75e89ee4740
+  - enabled: 1
+    path: Assets/Scenes/Enigme/Enigme Horloge.unity
+    guid: 1f8ac771efdec7d4bb1706157ff69911
+  - enabled: 1
+    path: Assets/Scenes/Enigme/Enigme Labyrinthe.unity
+    guid: 5a8cd04cb93e298449fdb4af69f85a55
+  - enabled: 1
+    path: Assets/Scenes/Enigme/Enigme Platform theo.unity
+    guid: cceb83f7fd4e0ea459de18a7036a46c8
+  - enabled: 1
+    path: Assets/Scenes/Enigme/Enigme Saut mouvement.unity
+    guid: cc743f1035be4de4197a6fee90e9fac8
+  - enabled: 1
+    path: Assets/Scenes/Enigme/Enigme TriggerCube.unity
+    guid: d8beeb707ef6e1d41811a59bdf54a893
+  - enabled: 1
+    path: Assets/Scenes/Enigme/Enigme lave.unity
+    guid: ca1e4e3f08123724d94ab902fac5ccf3
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 0e986af593e8505418fc799c6471e956
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: dd80a29b48e2a4a43904c9e66b5aa2dd, type: 2}

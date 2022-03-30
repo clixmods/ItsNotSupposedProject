@@ -28,7 +28,7 @@ namespace StarterAssets
 #endif
 
 #if ENABLE_INPUT_SYSTEM 
-		public void OnMove(InputValue value)
+		public virtual void OnMove(InputValue value)
 		{
 			MoveInput(value.Get<Vector2>());
 		}
@@ -57,25 +57,23 @@ namespace StarterAssets
 		}
 		public void OnRotate(InputValue value)
 		{
-			//Debug.Log("OOF");
 			RotateInput(value.isPressed);
 		}
 
 		public void OnRotateRight(InputValue value)
 		{
-			//Debug.Log("OOF");
 			RotateRightInput(value.isPressed);
 		}
 
 		public void OnRotateUp(InputValue value)
 		{
-			//Debug.Log("OOF");
+			
 			RotateUpInput(value.isPressed);
 		}
 
 		public void OnMousePosition(InputValue value)
 		{
-		//	Debug.Log("OOF");
+
 			MouseInput(value.Get<Vector2>());
 		}
 #else

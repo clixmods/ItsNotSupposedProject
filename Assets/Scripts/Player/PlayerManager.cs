@@ -35,19 +35,31 @@ public class PlayerManager : MonoBehaviour
         
     }
     private void FixedUpdate() {
-        Debug.LogError(death);
         if(transform.position.y < LevelManager.Util.GetOOBLimit() && !death )
         {
             death = true;
-            Debug.LogWarning("Fuck");
             _isFalling=true;
-            
         }
+        GroundedCheck();
+        
         WatchHealth();
     }
 
+    private void GroundedCheck()
+		{
+            
+		     float GroundedOffset = -0.14f;
+            float GroundedRadius = 0.5f;
+			// set sphere position, with offset
+			Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
+			poison = Physics.CheckSphere(spherePosition, GroundedRadius, 7, QueryTriggerInteraction.Ignore);
+		}
+    // This function check the health of the player
     void WatchHealth()
     {
+        if(CurrentHealth <= 0)
+            death = true;
+            
         if (poison)
         {
             timePoison -= Time.deltaTime;
@@ -100,9 +112,11 @@ public class PlayerManager : MonoBehaviour
     // le triggerexit et beh le poison reste true
     void OnTriggerStay(Collider other)
     {
+        Debug.Log("f");
+
         if(other.gameObject.layer == 6)
         {
-            Debug.Log("Player touch the trigger");
+            Debug.Log("fuck");
             poison = true;
         }
     }
@@ -110,7 +124,6 @@ public class PlayerManager : MonoBehaviour
     {
         if (other.gameObject.layer == 7)
         {
-            Debug.Log("Player dont touch the trigger");
             poison = false;
             timePoison = PlayerSettings.timePoison;
         }
