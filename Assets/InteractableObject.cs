@@ -23,7 +23,7 @@ public class InteractableObject : MonoBehaviour
     protected Vector3 _initialPos;
     protected Quaternion _initialRotation;
 
-    HintstringProperty _hintstringProperty;
+    protected HintstringProperty _hintstringProperty;
     
     public bool Grabable
     {
@@ -47,11 +47,14 @@ public class InteractableObject : MonoBehaviour
         _initialPos = transform.position;
         _initialRotation = transform.rotation;
         StartSpecific();
+
+
     }
     
     public virtual void StartSpecific()
     {
-
+         // Crée une boite de dialogue sur le monde 3D
+        _hintstringProperty = UIManager.CreateHintString(gameObject, "Press [E] to grab" , 5 );
     }
 
     public virtual void Triggered()
@@ -87,9 +90,13 @@ public class InteractableObject : MonoBehaviour
             _rb.WakeUp();
         	_rb.freezeRotation = false;
 			Vector3 rot = transform.position - Player.transform.position;
-	
-			_rb.AddTorque(   new Vector3((_input.look.y *  rot.y * 10 ), (_input.look.x* rot.x * 10), 0), ForceMode.Impulse);
+            Vector3 oof = Player.transform.rotation.eulerAngles;
+            Debug.Log(_input.look);
+            _rb.angularVelocity = new Vector3((_input.look.y *  rot.y * 10 ), (_input.look.x* rot.x * 10), (_input.look.x/2 + _input.look.y/2)* rot.z );
+			//_rb.AddTorque(   new Vector3((_input.look.y *  rot.y * 10 ), (_input.look.x* rot.x * 10), 0), ForceMode.VelocityChange);
 
+              //transform.Rotate(Vector3.down, _input.look.x*10, Space.World);
+	            //transform.Rotate(Vector3.right, _input.look.y*10, Space.World);
 				//Vector3 oof = objRig.rotation.eulerAngles + new Vector3( (_input.look.x * 10 ), (_input.look.y * 10), 0)  ;
 				//objRig.MoveRotation( Quaternion.LookRotation(oof) ) ;
 				// select the axis by which you want to rotate the GameObject
@@ -121,6 +128,7 @@ public class InteractableObject : MonoBehaviour
         gameObject.layer = 8;
 
         _rb.freezeRotation = true;
+        _hintstringProperty.enable = false;
     }
     public virtual void DropBehavior()
     {
@@ -129,6 +137,7 @@ public class InteractableObject : MonoBehaviour
 		_rb.drag = 1;		
         gameObject.layer = 6;
         _rb.freezeRotation = false;
+        _hintstringProperty.enable = true;
     }
     public virtual void MoveBehavior()
     {

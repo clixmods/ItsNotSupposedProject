@@ -88,12 +88,12 @@
                 },
                 {
                     "name": "Shoot",
-                    "type": "Button",
-                    "id": "ca53e205-d0b3-48cb-b2ad-467d4f93316f",
+                    "type": "Value",
+                    "id": "4b388252-9450-4aa0-86a2-758cb3876738",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -352,7 +352,7 @@
                 },
                 {
                     "name": "",
-                    "id": "0a812fd2-4706-4db5-88aa-a2119ca62d67",
+                    "id": "92f42548-f04b-4e8c-a788-f5ea9b579c62",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
