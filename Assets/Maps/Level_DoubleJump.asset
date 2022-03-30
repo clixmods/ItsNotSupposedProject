@@ -23,4 +23,7 @@ MonoBehaviour:
   CanEndgame: 1
   StartingDialogue: jump_beginning
   ExplanationDialogue: 
-  EndgameDialogue: 
+  EndgameDialogue: jump_congrat
+  myEvent:
+    m_PersistentCalls:
+      m_Calls: []

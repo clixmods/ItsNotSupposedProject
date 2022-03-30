@@ -21,9 +21,9 @@ MonoBehaviour:
   PlayerPrefab: {fileID: 5322241869790498710, guid: 15764a6c39434054eafac56e9d2ca69a, type: 3}
   OOBLimit: -3
   CanEndgame: 1
-  StartingDialogue: 
+  StartingDialogue: movejump_beginning
   ExplanationDialogue: 
-  EndgameDialogue: 
+  EndgameDialogue: movejump_end
   myEvent:
     m_PersistentCalls:
       m_Calls: []

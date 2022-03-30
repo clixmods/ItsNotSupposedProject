@@ -15,12 +15,21 @@ public class EndgameTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!LevelManager.Util.CanEndgame)    
+        WatcherEndgame();
+      
+    }
+
+    void WatcherEndgame()
+    {
+        if(trigger != null)
         {
-            trigger.enabled = false;
-        }    
-        else
-            trigger.enabled = true;
+            if(!LevelManager.Util.CanEndgame)    
+            {
+                trigger.enabled = false;
+            }    
+            else
+                trigger.enabled = true;
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -28,6 +37,7 @@ public class EndgameTrigger : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             LevelManager.Util.Endgame();
+            Destroy(trigger);
         }   
     }
 }

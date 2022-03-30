@@ -707,3 +707,300 @@ MonoBehaviour:
     Text: 'Developer : Great ! You are smarter than a lab mouse! I didn''t expect
       that! You may not be as cute as them but you certainly have their skills.'
     customDuration: 0
+  - name: horloge_beginning
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: 908450a5e4b6e6f4dbfe5d631a2cbabf, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: "Developer : Hello tester, today i\u2019m pretty happy to show you my new
+      creation : the CLOCK ! Can you wait one hour to see if it works fine ? thanks
+      ! may not be as cute as them but you certainly have their skills."
+    customDuration: 0
+  - name: horloge_end
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: 8097d39208de8bd40b689ac277e7d314, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: "Developer : I mean, I\u2019m pretty sure time passed by quite fast, but
+      I guess i\u2019ll just have faith in you. Great job, partner !"
+    customDuration: 0
+  - name: moving_platform_beginning
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: 80ff142062c16db4c990f5f71c3e0161, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: "Developer : Let me introduce this new challenge to you, it\u2019s rather
+      easy : just get to the other side of the room, think you can do that ? Oh,
+      you might have to jump a little bit, but exercise never killed anyone now,
+      did it ?"
+    customDuration: 0
+  - name: moving_platform_end
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: 25a6abc6d0f5e9247999c97edea4d698, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : And another success ! Not too out of breath ? Give yourself
+      a pat on the back, you almost deserve it.'
+    customDuration: 0
+  - name: cube_trigger_beginning
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: 7bd217238c4bbd640bbc265d568810f3, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : This one might confuse your tiny, uninteresting brain : you
+      will have to dispose of the soon-to-fall angular object onto this platform
+      over there. It should give you something useful to move on ! Good luck on figuring
+      that out, champion.'
+    customDuration: 0
+  - name: cube_trigger_end
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: 3cd5956304db77247b8bb6f0af6f9387, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : Excellent ! Your adapting skills are quite remarkable for
+      a specimen of your calibre. Keep up the good work !'
+    customDuration: 0
+  - name: movejump_beginning
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: 804122cbccbfa0949ba4b7a3367ba419, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : This one is a brand-new, original feature I added : jumping
+      ! Never saw that coming, huh ? All jokes asides, you just have to test this
+      new jumping style for me, pretty please.'
+    customDuration: 0
+  - name: movejump_end
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: 4a748a97e86357a43842fd10dad42fb0, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: "Developer : You handled it like a pro ! It\u2019s as if you already jumped
+      on multiple occasions during your life before that ! Interesting, really. "
+    customDuration: 0
+  - name: interactgrab_beginning
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: 8f19c029582a0a842ac9e433027d733f, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: "Developer : Hello again ! Here, you simply need to try and grab those...
+      things I\u2019m going to throw at you in a hot minute. It should not be too
+      violent, as long as you are able to use your hands, of course."
+    customDuration: 0
+  - name: interactgrab_end
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: f5f52cb6c5cc1c5408de2fda457fd9a4, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 1
+    isLooping: 0
+    minPitch: 1
+    maxPitch: 1.1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 'Developer : Who knew it could be that easy, huh ? Well, not you apparently.
+      Moving on !'
+    customDuration: 0

@@ -85,17 +85,17 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        if(Util == this || Util == null)
+        if(Util == null)
         {
             Util = this;
+            DontDestroyOnLoad(gameObject);
+            InitAudioSources();
         }      
         else
-            DestroyImmediate(gameObject);
+            Destroy(gameObject);
 
 
-        DontDestroyOnLoad(gameObject);
-
-        InitAudioSources();
+        
     }
 
     void InitAudioSources()

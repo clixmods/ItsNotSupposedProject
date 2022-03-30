@@ -21,9 +21,9 @@ MonoBehaviour:
   PlayerPrefab: {fileID: 5322241869790498710, guid: 5707faff5b183cb42803956e15bb172a, type: 3}
   OOBLimit: -3
   CanEndgame: 1
-  StartingDialogue: 
+  StartingDialogue: cube_trigger_beginning
   ExplanationDialogue: 
-  EndgameDialogue: 
+  EndgameDialogue: cube_trigger_end
   myEvent:
     m_PersistentCalls:
       m_Calls: []
