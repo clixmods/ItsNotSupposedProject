@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
     bool _canEndgame;
     bool endgameTriggered;
     Transform _player;
-
+    bool _firstSpawn;
 
     
     [Tooltip("undefined")]
@@ -41,7 +41,7 @@ public class LevelManager : MonoBehaviour
             Debug.LogError("Attention le LevelData dans le levelManager de la scène n'a pas été configuré !");
         }
 
-        GameObject Player = Instantiate(LevelData.PlayerPrefab);
+        GameObject Player = Instantiate(LevelData.PlayerPrefab,PlayerSpawnPoint.position, Quaternion.identity);
         PlayerManager playerManager = Player.GetComponentInChildren<PlayerManager>();
         FirstPersonController playerController = Player.GetComponentInChildren<FirstPersonController>();
 
@@ -58,7 +58,7 @@ public class LevelManager : MonoBehaviour
         playerController.enabled = true;
 
         // Crée une boite de dialogue sur le monde 3D
-        UIManager.CreateHintString(PlayerEndgamePoint.gameObject, LevelData.Description ,6666 );
+       // UIManager.CreateHintString(PlayerEndgamePoint.gameObject, LevelData.Description ,6666 );
         // Joue le dialogue de début de partie
         if(LevelData.StartingDialogue != "")
         {
@@ -76,6 +76,11 @@ public class LevelManager : MonoBehaviour
         _canEndgame = LevelData.CanEndgame;
 
         LevelData.myEvent.Invoke();
+
+        // On desactive le playerController car empeche de faire un set positions
+        playerController.enabled = false;
+        playerController.transform.position = PlayerSpawnPoint.transform.position;
+        playerController.enabled = true;
     }
 
     // Permet de savoir sur le joueur peut sortir du niveau

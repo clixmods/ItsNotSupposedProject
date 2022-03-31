@@ -53,6 +53,7 @@ namespace StarterAssets
         }
         private void Awake()
         {
+            Destroy(this);
             //make sure magazine is full
             bulletsLeft = magazineSize;
             readyToShoot = true;

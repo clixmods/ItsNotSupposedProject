@@ -22,5 +22,8 @@ MonoBehaviour:
   OOBLimit: -3
   CanEndgame: 1
   StartingDialogue: maze_beginning
-  ExplanationDialogue: 
-  EndgameDialogue: 
+  ExplanationDialogue: maze_explication
+  EndgameDialogue: maze_great
+  myEvent:
+    m_PersistentCalls:
+      m_Calls: []

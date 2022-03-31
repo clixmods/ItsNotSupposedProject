@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
     
     public PlayerDataObject PlayerSettings;
 
-    public int CurrentHealth = 3;
+    public float CurrentHealth = 3;
     public float timePv = 5;
    
     public bool death;
@@ -62,6 +62,8 @@ public class PlayerManager : MonoBehaviour
     // This function check the health of the player
     void WatchHealth()
     {
+        UIManager.OverlayBlood(CurrentHealth, PlayerSettings.StartHealth);
+
         if(CurrentHealth <= 0)
             death = true;
             
@@ -71,7 +73,7 @@ public class PlayerManager : MonoBehaviour
             if (timePoison <= 0)
             {
                 Debug.Log(CurrentHealth);
-                CurrentHealth--;
+                CurrentHealth -= 0.50f;
                 timePoison =  PlayerSettings.timePoison;
             }
         }
