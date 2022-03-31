@@ -735,7 +735,7 @@ MonoBehaviour:
       m_RotationOrder: 0
     Text: "Developer : Hello tester, today i\u2019m pretty happy to show you my new
       creation : the CLOCK ! Can you wait one hour to see if it works fine ? thanks
-      ! may not be as cute as them but you certainly have their skills."
+      !"
     customDuration: 0
   - name: horloge_end
     MixerGroup: {fileID: 0}

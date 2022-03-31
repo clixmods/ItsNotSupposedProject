@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6fee4f8926ba644283bc12220e01b64, type: 3}
   m_Name: Level_Horloge
   m_EditorClassIdentifier: 
-  Name: Horloge
-  Description: You can check if my horloge works fine ?
+  Name: The clock
+  Description: Can you check if my clock works fine ?
   PreviewImage: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   isUnlocked: 0
   sceneName: Enigme Horloge

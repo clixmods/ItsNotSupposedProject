@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6fee4f8926ba644283bc12220e01b64, type: 3}
   m_Name: Level MovementOnlyWhileJump
   m_EditorClassIdentifier: 
-  Name: Best jump ever
-  Description: 
+  Name: The best jump system
+  Description: I have code a new jump, I need your approbation of his new version
+    !
   PreviewImage: {fileID: 0}
   isUnlocked: 0
   sceneName: Enigme Saut Mouvement

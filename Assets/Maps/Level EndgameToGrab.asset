@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6fee4f8926ba644283bc12220e01b64, type: 3}
   m_Name: Level EndgameToGrab
   m_EditorClassIdentifier: 
-  Name: EdngameToGrab
-  Description: Grab the endgame
+  Name: Interaction with objects
+  Description: Try the new interaction system
   PreviewImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   isUnlocked: 0
   sceneName: Enigme GrabEndgame

@@ -5,7 +5,7 @@ using UnityEngine;
 public class EndgameTrigger : MonoBehaviour
 {
     BoxCollider trigger;
-
+    [SerializeField] GameObject flag;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,10 +25,15 @@ public class EndgameTrigger : MonoBehaviour
         {
             if(!LevelManager.Util.CanEndgame)    
             {
+                flag.SetActive(false);
                 trigger.enabled = false;
             }    
             else
+            {
                 trigger.enabled = true;
+                flag.SetActive(true);
+            }
+                
         }
     }
 

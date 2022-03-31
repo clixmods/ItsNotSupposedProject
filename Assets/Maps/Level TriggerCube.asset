@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6fee4f8926ba644283bc12220e01b64, type: 3}
   m_Name: Level TriggerCube
   m_EditorClassIdentifier: 
-  Name: Portal Trigger
-  Description: Portal Trigger
+  Name: Cube to stair
+  Description: Place the cube to the trigger to spawn the stair to the endgame.
   PreviewImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   isUnlocked: 0
   sceneName: Enigme TriggerCube

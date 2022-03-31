@@ -22,8 +22,11 @@ public class InteractableObject : MonoBehaviour
     MeshCollider _collider;
     protected Vector3 _initialPos;
     protected Quaternion _initialRotation;
+    protected Outline _outline;
 
     protected HintstringProperty _hintstringProperty;
+
+   [SerializeField] protected string _hintText = "Press [E] to grab";
     
     public bool Grabable
     {
@@ -43,9 +46,12 @@ public class InteractableObject : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _collider = GetComponent<MeshCollider>();
+        _outline = GetComponent<Outline>();
         _collider.convex = true;
         _initialPos = transform.position;
         _initialRotation = transform.rotation;
+        _outline.OutlineWidth = 10;
+
         StartSpecific();
 
 
@@ -54,7 +60,7 @@ public class InteractableObject : MonoBehaviour
     public virtual void StartSpecific()
     {
          // Crée une boite de dialogue sur le monde 3D
-        _hintstringProperty = UIManager.CreateHintString(gameObject, "Press [E] to grab" , 5 );
+        _hintstringProperty = UIManager.CreateHintString(gameObject, _hintText , 5 );
     }
 
     public virtual void Triggered()

@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Util;
     [SerializeField] UiProperty property;
 
     [SerializeField] static GameObject MessageBox;
     [SerializeField] static GameObject InputBox;
     [SerializeField] static GameObject ClientBox;
 
+    [SerializeField] Image _overlayRed;
 
-    
     [Header("SUBTITLE")]
     [SerializeField] TMP_Text subtitleComponent;
     static float _durationSubtitle;
@@ -38,7 +40,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Util = this;
     }
 
     // Update is called once per frame
@@ -76,6 +78,21 @@ public class UIManager : MonoBehaviour
         }
         else
             subtitleCompo.alpha = 0;
+    }
+
+    public static void OverlayBlood(float health, float maxHealth)
+    {
+        float cap = maxHealth/0.75f;
+        float oof = health/maxHealth;
+        if(health <= cap)
+        {
+            Util._overlayRed.color = new Color(Util._overlayRed.color.r, Util._overlayRed.color.g, Util._overlayRed.color.b, 1f-(oof) ); 
+        }
+        else
+        {
+            Util._overlayRed.color = new Color(Util._overlayRed.color.r, Util._overlayRed.color.g, Util._overlayRed.color.b, 0 ); 
+
+        }
     }
 
     /*

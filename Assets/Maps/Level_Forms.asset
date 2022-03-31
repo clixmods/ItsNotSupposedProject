@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level_Forms
   m_EditorClassIdentifier: 
   Name: Shape in the shape
-  Description: 
+  Description: Try to put each forms on his proper hole.
   PreviewImage: {fileID: 21300000, guid: 0c7bb91b3c862b444ac8fb98c38c8787, type: 3}
   isUnlocked: 0
   sceneName: Enigme Forme
@@ -24,3 +24,6 @@ MonoBehaviour:
   StartingDialogue: forme_beginning
   ExplanationDialogue: forme_explication
   EndgameDialogue: forme_be_proud
+  myEvent:
+    m_PersistentCalls:
+      m_Calls: []

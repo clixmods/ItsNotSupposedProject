@@ -17,6 +17,7 @@ namespace StarterAssets
 		public bool RotateUp;
 		public bool RotateRight;
 		public bool shoot;
+		public bool pause;
 		public Vector2 mousePosition;
 
 		[Header("Movement Settings")]
@@ -45,6 +46,11 @@ namespace StarterAssets
 		public void OnJump(InputValue value)
 		{
 			JumpInput(value.isPressed);
+		}
+
+		public void OnPause(InputValue value)
+		{
+			PauseInput(value.isPressed);
 		}
 
 		// New input for shoot 
@@ -98,6 +104,10 @@ namespace StarterAssets
 			look = newLookDirection;
 		}
 
+		public void PauseInput(bool PauseInput)
+		{
+			pause = PauseInput;
+		}
 		public void JumpInput(bool newJumpState)
 		{
 			jump = newJumpState;
