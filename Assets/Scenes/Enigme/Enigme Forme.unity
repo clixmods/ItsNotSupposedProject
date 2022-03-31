@@ -2229,25 +2229,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &1988151942 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5318725492660707815, guid: 0567adc641b6e5a43b9e8ec854cfe48b, type: 3}
-  m_PrefabInstance: {fileID: 2627901584771092861}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1988151947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1988151942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f96c2cdf712d7c6479f611e308ffc331, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  property: {fileID: 11400000, guid: 0d84fbc9fc88f14479299c0f056236b7, type: 2}
-  offset: {x: 0, y: 15, z: 0}
 --- !u!4 &2117035868 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ca430d735d661834184081c326f48e84, type: 3}

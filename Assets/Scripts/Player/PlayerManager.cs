@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour
     public float timePv = 5;
    
     public bool death;
+    bool _isFalling;
     public bool revive=false;
 
     public bool poison = false;
@@ -30,6 +31,18 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        
+    }
+    private void FixedUpdate() {
+        Debug.LogError(death);
+        if(transform.position.y < LevelManager.Util.GetOOBLimit() && !death )
+        {
+            death = true;
+            Debug.LogWarning("Fuck");
+            _isFalling=true;
+            
+        }
         WatchHealth();
     }
 
@@ -51,12 +64,15 @@ public class PlayerManager : MonoBehaviour
             transform.GetComponent<FirstPersonController>().enabled = false; 
             
             transform.position = LevelManager.Util.GetPlayerSpawnPoint().position; 
-            death = false;
+           
             CurrentHealth = PlayerSettings.StartHealth;
             poison = false;
 
             transform.GetComponent<FirstPersonController>().enabled = true; 
-           
+             death = false;
+
+            if(_isFalling)
+                AudioManager.PlaySoundAtPosition("plr_fall_"+Random.Range(0,5), transform.position);
         }
     
 
