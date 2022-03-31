@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -89,6 +90,7 @@ namespace StarterAssets
 		[Tooltip("Movement force applied on the object when the player held it while he move.")]
 		public float moveForce = 250;
 
+		GameObject aimed;
 		// Player property
 		public StarterAssetsInputs Input
 		{
@@ -96,9 +98,30 @@ namespace StarterAssets
 			set{ _input = value;}
 		}
 
+
+
 		void WatchPickup()
-		{		
+		{	
+			if(aimed != null)
+			{
+				if(aimed.transform.TryGetComponent<Outline>(out Outline outlin))
+				{
+					outlin.OutlineColor = Color.white;
+				}
+				aimed = null;
+			}	
+			
+
 			Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * maxDistanceToPickupObject, Color.yellow);
+			RaycastHit Aim;
+			if(Physics.Raycast(Camera.main.transform.position , Camera.main.transform.TransformDirection(Vector3.forward)*maxDistanceToPickupObject , out Aim , maxDistanceToPickupObject  ))
+			{
+				if(Aim.transform.TryGetComponent<Outline>(out Outline obj))
+				{
+					obj.OutlineColor = Color.green;
+					aimed = obj.gameObject;
+				}
+			}
 
 			if(_input.interact)
 			{
@@ -204,7 +227,10 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
-
+			if(_input.pause)
+			{
+				SceneManager.LoadScene("MenuStart");
+			}
 			
 
 			
@@ -212,6 +238,7 @@ namespace StarterAssets
 		}
 		private void FixedUpdate()
 		{
+
 			WatchPickup();
 			if(heldObj != null)
 			{

@@ -45,4 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: []
   audioSourcePoolSize: 32
-  TableAliasesLoaded: []
+  TableAliasesLoaded:
+  - {fileID: 11400000, guid: cb4842f905d74564e958f7cfc531f9dd, type: 2}

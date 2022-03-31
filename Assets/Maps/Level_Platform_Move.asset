@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6fee4f8926ba644283bc12220e01b64, type: 3}
   m_Name: Level_Platform_Move
   m_EditorClassIdentifier: 
-  Name: Platform_Mouv
-  Description: Platform_Mouv_desc
+  Name: Moving Platform
+  Description: Try to finish the level with a new moving platform script.
   PreviewImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   isUnlocked: 0
   sceneName: Enigme Platform theo
@@ -21,6 +21,9 @@ MonoBehaviour:
   PlayerPrefab: {fileID: 5322241869790498710, guid: 5707faff5b183cb42803956e15bb172a, type: 3}
   OOBLimit: -3
   CanEndgame: 1
-  StartingDialogue: 
+  StartingDialogue: moving_platform_beginning
   ExplanationDialogue: 
-  EndgameDialogue: 
+  EndgameDialogue: moving_platform_end
+  myEvent:
+    m_PersistentCalls:
+      m_Calls: []

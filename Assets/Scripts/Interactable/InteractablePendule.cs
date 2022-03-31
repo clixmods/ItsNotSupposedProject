@@ -33,6 +33,8 @@ public class InteractablePendule : InteractableObject
         secDone = false;
         _rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY;
         gameObject.layer = 8;
+
+        _outline.OutlineWidth = 50;
     }
     public override void LateUpdateSpecific()
     {
@@ -60,6 +62,7 @@ public class InteractablePendule : InteractableObject
         }
         else
         {
+            _outline.OutlineMode = Outline.Mode.OutlineHidden;
             switch(_typePendule) 
             {
                 case TypePendule.Hour :
