@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 53633d8118e4cf640bcc3a5c20d52317
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - LevelData: {fileID: 11400000, guid: 95c4670b569b83845a6f0439ebd07e9f, type: 2}
+  - PlayerSpawnPoint: {instanceID: 0}
+  - PlayerEndgamePoint: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

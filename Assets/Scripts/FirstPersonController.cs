@@ -1,4 +1,6 @@
 using UnityEngine;
+using System;
+using UnityEngine.SceneManagement;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -12,6 +14,8 @@ namespace StarterAssets
 	public class FirstPersonController : MonoBehaviour
 	{
 		[Header("Player")]
+		public PlayerDataObject PlayerSettings;
+
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 4.0f;
 		[Tooltip("Sprint speed of the character in m/s")]
@@ -26,6 +30,8 @@ namespace StarterAssets
 		public float JumpHeight = 1.2f;
 		[Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
 		public float Gravity = -15.0f;
+		[Tooltip("Number of Jumps")]
+		public float JumpMax = 1;
 
 		[Space(10)]
 		[Tooltip("Time required to pass before being able to jump again. Set to 0f to instantly jump again")]
@@ -52,27 +58,140 @@ namespace StarterAssets
 		public float BottomClamp = -90.0f;
 
 		// cinemachine
-		private float _cinemachineTargetPitch;
+		[SerializeField] float _cinemachineTargetPitch;
 
 		// player
-		private float _speed;
+		protected float _speed;
 		private float _rotationVelocity;
-		private float _verticalVelocity;
+		protected float _verticalVelocity;
 		private float _terminalVelocity = 53.0f;
+		private int jumpCount = 0;
 
 		// timeout deltatime
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
 		private PlayerInput _playerInput;
-		private CharacterController _controller;
-		private StarterAssetsInputs _input;
+		protected CharacterController _controller;
+		[SerializeField] protected StarterAssetsInputs _input;
 		private GameObject _mainCamera;
 
 		private const float _threshold = 0.01f;
 		
 		private bool IsCurrentDeviceMouse => _playerInput.currentControlScheme == "KeyboardMouse";
 
+
+		// Pickup property
+		[Tooltip("How far the player can take the object")]
+		[SerializeField] float maxDistanceToPickupObject = 5000; 
+		[Tooltip("Where the object will be move, when the player take it")]
+		public Transform pickedObjectStartPos;
+		private GameObject heldObj;
+		[Tooltip("Movement force applied on the object when the player held it while he move.")]
+		public float moveForce = 250;
+
+		GameObject aimed;
+		// Player property
+		public StarterAssetsInputs Input
+		{
+			get{ return _input ;}
+			set{ _input = value;}
+		}
+
+
+
+		void WatchPickup()
+		{	
+			if(aimed != null)
+			{
+				if(aimed.transform.TryGetComponent<Outline>(out Outline outlin))
+				{
+					outlin.OutlineColor = Color.white;
+				}
+				aimed = null;
+			}	
+			
+
+			Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * maxDistanceToPickupObject, Color.yellow);
+			RaycastHit Aim;
+			if(Physics.Raycast(Camera.main.transform.position , Camera.main.transform.TransformDirection(Vector3.forward)*maxDistanceToPickupObject , out Aim , maxDistanceToPickupObject  ))
+			{
+				if(Aim.transform.TryGetComponent<Outline>(out Outline obj))
+				{
+					obj.OutlineColor = Color.green;
+					aimed = obj.gameObject;
+				}
+			}
+
+			if(_input.interact)
+			{
+				if(heldObj == null)
+				{
+					RaycastHit hit;
+					if(Physics.Raycast(Camera.main.transform.position , Camera.main.transform.TransformDirection(Vector3.forward)*maxDistanceToPickupObject , out hit , maxDistanceToPickupObject  ))
+					{
+						Debug.Log("Objectt Attempt");
+						if(hit.transform.TryGetComponent<InteractableObject>(out InteractableObject obj))
+						{
+
+							
+								PickupObject(hit.transform.gameObject);
+									if(obj.Grabable)
+										heldObj = hit.transform.gameObject;	
+
+						}
+					}
+				}
+				else
+				{
+					Debug.Log("Objectt dropped");
+					DropObject();
+				}
+			}
+			if(heldObj != null)
+			{
+				MoveObject();
+			}
+			_input.interact = false;
+		}
+
+		void MoveObject()
+		{
+			// On check si l'objet est trop loin lorsque le joueur le tien, si c'est trop loin on le drop
+			float maxDistance = maxDistanceToPickupObject + 5f;
+			if( Vector3.Distance(transform.position, heldObj.transform.position) > maxDistance)
+			{
+				DropObject();
+				return;
+			}	
+
+			if(Vector3.Distance(heldObj.transform.position, pickedObjectStartPos.transform.position) > 0.1f)
+			{
+				Vector3 moveDirection = (pickedObjectStartPos.position - heldObj.transform.position);
+				heldObj.GetComponent<Rigidbody>().AddForce(moveDirection * moveForce);
+				
+			}
+		}
+		void PickupObject(GameObject pickObj)
+		{
+			pickObj.GetComponent<InteractableObject>().PickupBehavior();
+		}
+		void DropObject()
+		{
+			heldObj.GetComponent<InteractableObject>().DropBehavior();
+			heldObj = null;
+		}
+
+
+		void ChangeRotationTarget()
+		{
+			if(heldObj.TryGetComponent<Rigidbody>(out Rigidbody objRig))
+			{
+			
+			}
+		}
+
+		// When the Gameobject is waked
 		private void Awake()
 		{
 			// get a reference to our main camera
@@ -85,12 +204,22 @@ namespace StarterAssets
 		private void Start()
 		{
 			_controller = GetComponent<CharacterController>();
-			_input = GetComponent<StarterAssetsInputs>();
+			if(_input == null) // si jamais on l'a setup avant
+				_input = GetComponent<StarterAssetsInputs>();
 			_playerInput = GetComponent<PlayerInput>();
 
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
+
+			Cursor.visible = false;
+			Cursor.lockState = CursorLockMode.Locked;
+			if(PlayerSettings != null)
+			{
+				GroundLayers = PlayerSettings.GroundLayers;
+				maxDistanceToPickupObject = PlayerSettings.maxDistanceToGrab;
+			}
+
 		}
 
 		private void Update()
@@ -98,11 +227,35 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+			if(_input.pause)
+			{
+				SceneManager.LoadScene("MenuStart");
+			}
+			
+
+			
+			
+		}
+		private void FixedUpdate()
+		{
+
+			WatchPickup();
+			if(heldObj != null)
+			{
+				if (_input.rotate ) //we only want to begin this process on the initial click
+				{
+					heldObj.GetComponent<InteractableObject>().RotateBehavior(transform, _input);
+				}
+				else
+					heldObj.GetComponent<Rigidbody>().freezeRotation = true;
+			}
+			
 		}
 
 		private void LateUpdate()
 		{
-			CameraRotation();
+			if (!_input.rotate)
+				CameraRotation();
 		}
 
 		private void GroundedCheck()
@@ -134,8 +287,9 @@ namespace StarterAssets
 			}
 		}
 
-		private void Move()
+		public virtual void Move()
 		{
+			
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
@@ -178,13 +332,20 @@ namespace StarterAssets
 			}
 
 			// move the player
-			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+				_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 		}
 
 		private void JumpAndGravity()
 		{
-			if (Grounded)
+			
+			// if(Grounded && jumpCount >= JumpMax)
+			// {
+			// 	jumpCount = 0;
+			// }
+
+			if (Grounded  )
 			{
+				
 				// reset the fall timeout timer
 				_fallTimeoutDelta = FallTimeout;
 
@@ -197,6 +358,10 @@ namespace StarterAssets
 				// Jump
 				if (_input.jump && _jumpTimeoutDelta <= 0.0f)
 				{
+					jumpCount++;
+					// if( ( !Grounded && jumpCount < JumpMax))
+					// 	_input.jump = false;
+
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 				}
@@ -217,9 +382,10 @@ namespace StarterAssets
 				{
 					_fallTimeoutDelta -= Time.deltaTime;
 				}
-
+				
 				// if we are not grounded, do not jump
 				_input.jump = false;
+				
 			}
 
 			// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
