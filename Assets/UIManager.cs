@@ -96,13 +96,12 @@ public class UIManager : MonoBehaviour
     }
 
     /*
-        This function will create a hintstring at the top of your desired gameobject, if the gameobject is deleted
-        the hintstring will be deleted too (in HintstringProperty.cs)
+        This function will create a subtitle on the screen
     */
     public static void CreateSubtitle(string message = "Name: Hello I'm a subtitle text", float duration = 10f)
     {
         subtitleCompo.text = message;
-        _durationSubtitle = duration;
+        _durationSubtitle = duration + 2 ;
         // if(aGameObject == null)
         // {
         //     Debug.Log("Attempt to create a hintstring on a non existant object (message : "+message);

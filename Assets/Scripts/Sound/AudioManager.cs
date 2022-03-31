@@ -204,18 +204,19 @@ public class AudioManager : MonoBehaviour
         }
         audioS.gameObject.transform.position = position;
         audioS.gameObject.SetActive(true);
+        int index = Random.Range(0,clip.audio.Length);
         if(clip.isLooping)
         {
-            audioS.clip = clip.audio[Random.Range(0,clip.audio.Length)];
+            audioS.clip = clip.audio[index];
             audioS.Play();
 
         }
         else
         {
-            audioS.PlayOneShot(clip.audio[Random.Range(0,clip.audio.Length)], clip.volume);
+            audioS.PlayOneShot(clip.audio[index], clip.volume);
              //audioS.clip = clip.audio[0];
              //audioS.Play();
-            UIManager.CreateSubtitle(clip.Text);
+            UIManager.CreateSubtitle(clip.Text, clip.audio[index].length);
             
         }
         return clip;

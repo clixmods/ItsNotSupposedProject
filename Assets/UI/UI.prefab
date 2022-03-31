@@ -6488,7 +6488,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Narrator : Hello im a big subtitle'
+  m_text: 'Narrator : Hello im a big subtitleNarrator : Hello im a big subtitleNarrator
+    : Hello im a big subtitleNarrator : Hello im a big subtitleNarrator : Hello im
+    a big subtitleNarrator : Hello im a big subtitleNarrator : Hello im a big subtitle'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4f42936621eac54439430c47f15fdaa2, type: 2}
   m_sharedMaterial: {fileID: -1847140487863694593, guid: 4f42936621eac54439430c47f15fdaa2, type: 2}
@@ -6515,7 +6517,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45.05
+  m_fontSize: 37.1
   m_fontSizeBase: 21.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6551,7 +6553,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -160.58337, y: -16.387032, z: -206.48907, w: -0.38134766}
+  m_margin: {x: -349.28705, y: -16.387032, z: -411.57172, w: -0.38134766}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
