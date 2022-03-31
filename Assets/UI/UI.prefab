@@ -3848,7 +3848,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: '[ZQSD] : Move \n[SPACE] to jump \n[E] to grab \n[Right Click] + [Mouse]
-    to rotate grabbed object \n [ECHAP] Back to Main Menu'
+    to rotate grabbed object \n[SHIFT] Sprint \n[ECHAP] Back to Main Menu'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4f42936621eac54439430c47f15fdaa2, type: 2}
   m_sharedMaterial: {fileID: -1847140487863694593, guid: 4f42936621eac54439430c47f15fdaa2, type: 2}

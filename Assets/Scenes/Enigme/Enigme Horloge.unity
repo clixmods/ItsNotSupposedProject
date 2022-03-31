@@ -212,7 +212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a89a1ca49bdb985438df63446c762424, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000011920929
+      value: -3.06
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a89a1ca49bdb985438df63446c762424, type: 3}
       propertyPath: m_LocalPosition.z
@@ -351,7 +351,9 @@ MonoBehaviour:
   LevelData: {fileID: 11400000, guid: 07bf92e3672b9fc46b150d67e025d7d6, type: 2}
   PlayerSpawnPoint: {fileID: 976535819}
   PlayerEndgamePoint: {fileID: 504070242}
-  _canEndgame: 0
+  myEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &429675790
 Transform:
   m_ObjectHideFlags: 0
@@ -481,7 +483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca430d735d661834184081c326f48e84, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3.06
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca430d735d661834184081c326f48e84, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1705,6 +1707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 1
   _isGrabbed: 0
+  _hintText: Press [E] to grab
   _oof: 0
   _typePendule: 1
   _speedRotation: 0.5
@@ -2492,6 +2495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 1
   _isGrabbed: 0
+  _hintText: Press [E] to grab
   _oof: 0
   _typePendule: 0
   _speedRotation: 0.05
@@ -2640,6 +2644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 1
   _isGrabbed: 0
+  _hintText: Press [E] to grab
   _oof: 0
   _typePendule: 2
   _speedRotation: 1
