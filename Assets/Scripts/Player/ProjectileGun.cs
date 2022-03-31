@@ -69,7 +69,7 @@ namespace StarterAssets
         private void MyInput()
         {
             //Check if allowed to hold down button and take corresponding input
-            if (allowButtonHold) shooting = _input.Shoot;
+            if (allowButtonHold) shooting = _input.shoot;
 
             else shooting = _input.shoot;
 
@@ -81,6 +81,7 @@ namespace StarterAssets
             //Shooting
             if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
             {
+                Debug.Log("shoot?");
                 //Set bullets shot to 0
                 bulletsShot = 0;
 
@@ -124,7 +125,9 @@ namespace StarterAssets
 
             //Instantiate muzzle flash, if you have one
             if (muzzleFlash != null)
+                
                 Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
+                Debug.Log("instantiate?");
 
             bulletsLeft--;
             bulletsShot++;
