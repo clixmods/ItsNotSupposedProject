@@ -17,6 +17,7 @@ MonoBehaviour:
   timePoison: 1
   MaxJump: 1
   JumpHeight: 1
+  maxDistanceToGrab: 5
   GroundLayers:
     serializedVersion: 2
     m_Bits: 129
