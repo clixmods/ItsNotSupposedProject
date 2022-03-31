@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6fee4f8926ba644283bc12220e01b64, type: 3}
+  m_Name: Level TriggerCube
+  m_EditorClassIdentifier: 
+  Name: Cube to stair
+  Description: Place the cube to the trigger to spawn the stair to the endgame.
+  PreviewImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  isUnlocked: 0
+  sceneName: Enigme TriggerCube
+  LevelPlayerSetting: {fileID: 11400000, guid: d4c2c73232f9bfc4fb263bf733e17729, type: 2}
+  PlayerPrefab: {fileID: 5322241869790498710, guid: 5707faff5b183cb42803956e15bb172a, type: 3}
+  OOBLimit: -3
+  CanEndgame: 1
+  StartingDialogue: cube_trigger_beginning
+  ExplanationDialogue: 
+  EndgameDialogue: cube_trigger_end
+  myEvent:
+    m_PersistentCalls:
+      m_Calls: []

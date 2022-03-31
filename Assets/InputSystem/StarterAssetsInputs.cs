@@ -16,6 +16,8 @@ namespace StarterAssets
 		public bool rotate;
 		public bool RotateUp;
 		public bool RotateRight;
+		public bool shoot;
+		public bool pause;
 		public Vector2 mousePosition;
 
 		[Header("Movement Settings")]
@@ -28,7 +30,7 @@ namespace StarterAssets
 #endif
 
 #if ENABLE_INPUT_SYSTEM 
-		public void OnMove(InputValue value)
+		public virtual void OnMove(InputValue value)
 		{
 			MoveInput(value.Get<Vector2>());
 		}
@@ -46,6 +48,17 @@ namespace StarterAssets
 			JumpInput(value.isPressed);
 		}
 
+		public void OnPause(InputValue value)
+		{
+			PauseInput(value.isPressed);
+		}
+
+		// New input for shoot 
+		public void OnShoot(InputValue value)
+		{
+			ShootInput(value.isPressed);
+		}
+
 		public void OnInteract(InputValue value)
 		{
 			InteractInput(value.isPressed);
@@ -57,25 +70,23 @@ namespace StarterAssets
 		}
 		public void OnRotate(InputValue value)
 		{
-			//Debug.Log("OOF");
 			RotateInput(value.isPressed);
 		}
 
 		public void OnRotateRight(InputValue value)
 		{
-			//Debug.Log("OOF");
 			RotateRightInput(value.isPressed);
 		}
 
 		public void OnRotateUp(InputValue value)
 		{
-			//Debug.Log("OOF");
+			
 			RotateUpInput(value.isPressed);
 		}
 
 		public void OnMousePosition(InputValue value)
 		{
-		//	Debug.Log("OOF");
+
 			MouseInput(value.Get<Vector2>());
 		}
 #else
@@ -93,6 +104,10 @@ namespace StarterAssets
 			look = newLookDirection;
 		}
 
+		public void PauseInput(bool PauseInput)
+		{
+			pause = PauseInput;
+		}
 		public void JumpInput(bool newJumpState)
 		{
 			jump = newJumpState;
@@ -100,6 +115,12 @@ namespace StarterAssets
 		public void InteractInput(bool newInteractState)
 		{
 			interact = newInteractState;
+		}
+
+		public void ShootInput(bool newShootState)
+		{
+			shoot = newShootState;
+			Debug.Log("Shoot state : "+shoot);
 		}
 
 		public void SprintInput(bool newSprintState)

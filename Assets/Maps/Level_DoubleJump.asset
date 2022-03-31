@@ -17,3 +17,13 @@ MonoBehaviour:
   PreviewImage: {fileID: 21300000, guid: c26f8bae451d6d14f923b6a67da34592, type: 3}
   isUnlocked: 0
   sceneName: Enigme DoubleJump
+  LevelPlayerSetting: {fileID: 11400000, guid: 85e5d574a84ae9248b13be18dd99665c, type: 2}
+  PlayerPrefab: {fileID: 5322241869790498710, guid: 5707faff5b183cb42803956e15bb172a, type: 3}
+  OOBLimit: -3
+  CanEndgame: 1
+  StartingDialogue: jump_beginning
+  ExplanationDialogue: 
+  EndgameDialogue: jump_congrat
+  myEvent:
+    m_PersistentCalls:
+      m_Calls: []
