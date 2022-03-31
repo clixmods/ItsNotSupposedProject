@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9973445b7d9321542adc89ff90c70795, type: 3}
   m_Name: Player Data
   m_EditorClassIdentifier: 
-  StartHealth: 1
+  StartHealth: 2
   timeRegenHealth: 5
   timePoison: 1
   MaxJump: 1
