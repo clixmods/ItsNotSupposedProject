@@ -50,31 +50,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: da38696eaa16ea74f828fa28c840c195, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0024585724
+      value: 0.00050735474
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: da38696eaa16ea74f828fa28c840c195, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.002487421
+      value: -0.009094715
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: da38696eaa16ea74f828fa28c840c195, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.000006198883
+      value: 0.000041484833
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: da38696eaa16ea74f828fa28c840c195, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9999985
+      value: 0.9999896
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: da38696eaa16ea74f828fa28c840c195, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.001243682
+      value: -0.0045473897
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: da38696eaa16ea74f828fa28c840c195, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0012296921
+      value: -0.000253885
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: da38696eaa16ea74f828fa28c840c195, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000015293481
+      value: -0.000001154526
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: da38696eaa16ea74f828fa28c840c195, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -142,6 +142,10 @@ PrefabInstance:
     - target: {fileID: 2019606082802277892, guid: eeebdcb186c87654894652dc1f09c735, type: 3}
       propertyPath: shootForce
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019606082802277892, guid: eeebdcb186c87654894652dc1f09c735, type: 3}
+      propertyPath: allowInvoke
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2019606082802277892, guid: eeebdcb186c87654894652dc1f09c735, type: 3}
       propertyPath: attackPoint
