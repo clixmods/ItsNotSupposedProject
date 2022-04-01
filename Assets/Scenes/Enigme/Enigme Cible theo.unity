@@ -356,6 +356,7 @@ GameObject:
   - component: {fileID: 322740283}
   - component: {fileID: 322740282}
   - component: {fileID: 322740281}
+  - component: {fileID: 322740286}
   m_Layer: 0
   m_Name: Cible
   m_TagString: Untagged
@@ -384,6 +385,7 @@ MonoBehaviour:
   lum2: {fileID: 1022380170}
   lum3: {fileID: 526257674}
   lum4: {fileID: 921895727}
+  rb: {fileID: 322740286}
 --- !u!65 &322740282
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -460,6 +462,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &322740286
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322740280}
+  serializedVersion: 2
+  m_Mass: 50
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &401930053
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,6 +1851,7 @@ GameObject:
   - component: {fileID: 1070776727}
   - component: {fileID: 1070776726}
   - component: {fileID: 1070776725}
+  - component: {fileID: 1070776730}
   m_Layer: 0
   m_Name: Cible (1)
   m_TagString: Untagged
@@ -1861,6 +1880,7 @@ MonoBehaviour:
   lum2: {fileID: 1022380170}
   lum3: {fileID: 526257674}
   lum4: {fileID: 921895727}
+  rb: {fileID: 1070776730}
 --- !u!65 &1070776726
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1937,6 +1957,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1070776730
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070776724}
+  serializedVersion: 2
+  m_Mass: 50
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!115 &1191222436
 MonoScript:
   m_ObjectHideFlags: 0
@@ -2250,6 +2286,7 @@ GameObject:
   - component: {fileID: 1721692168}
   - component: {fileID: 1721692167}
   - component: {fileID: 1721692166}
+  - component: {fileID: 1721692171}
   m_Layer: 0
   m_Name: Cible (2)
   m_TagString: Untagged
@@ -2278,6 +2315,7 @@ MonoBehaviour:
   lum2: {fileID: 1022380170}
   lum3: {fileID: 526257674}
   lum4: {fileID: 921895727}
+  rb: {fileID: 1721692171}
 --- !u!65 &1721692167
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2354,6 +2392,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1721692171
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721692165}
+  serializedVersion: 2
+  m_Mass: 50
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1755950934
 GameObject:
   m_ObjectHideFlags: 0

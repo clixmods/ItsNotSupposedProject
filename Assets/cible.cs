@@ -16,7 +16,7 @@ public class cible : MonoBehaviour
     public GameObject lum3;
     public GameObject lum4;
 
-    Rigidbody rb;
+    public Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
