@@ -3,7 +3,14 @@ guid: f96c2cdf712d7c6479f611e308ffc331
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - property: {fileID: 11400000, guid: 0d84fbc9fc88f14479299c0f056236b7, type: 2}
+  - _overlayRed: {instanceID: 0}
+  - MenuPause: {instanceID: 0}
+  - MapName: {instanceID: 0}
+  - MapDescription: {instanceID: 0}
+  - MapPreview: {instanceID: 0}
+  - subtitleComponent: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

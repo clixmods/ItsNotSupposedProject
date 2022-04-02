@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class UIManager : MonoBehaviour
@@ -14,6 +15,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] static GameObject ClientBox;
 
     [SerializeField] Image _overlayRed;
+
+    [Header("PAUSE")]
+    [SerializeField] GameObject MenuPause;
+    [SerializeField] TMP_Text MapName;
+    [SerializeField] TMP_Text MapDescription;
+    [SerializeField] Image MapPreview;
 
     [Header("SUBTITLE")]
     [SerializeField] TMP_Text subtitleComponent;
@@ -35,19 +42,43 @@ public class UIManager : MonoBehaviour
 
         subtitleCompo = subtitleComponent;
 
+
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
         Util = this;
+
+        InitPauseMenu();
     }
 
+    // Set image, text from LevelData property in the LevelManager
+    void InitPauseMenu()
+    {
+        if(LevelManager.Util != null && LevelManager.Util.LevelData != null)
+        {
+            MapName.text = LevelManager.Util.LevelData.Name;
+            MapDescription.text = LevelManager.Util.LevelData.Description;
+            MapPreview.sprite = LevelManager.Util.LevelData.PreviewImage;
+        }
+        else
+        {
+            Debug.LogError("LevelData in levelManager is not set, InitPauseMenu function fail");
+        }
+        
+    }
     // Update is called once per frame
     void Update()
     {
         UpdateHintstring();
         UpdateSubtitle();
+        
+        if(LevelManager.Util.IsPaused)
+            MenuPause.SetActive(true);
+        else
+            MenuPause.SetActive(false);
     }
 
     void UpdateHintstring()
@@ -59,11 +90,23 @@ public class UIManager : MonoBehaviour
             if (hintPro.relatedObject == null)
                 continue;
 
-            if(hintPro.offset == null)
-                hintstring.transform.position = Camera.main.WorldToScreenPoint(hintPro.relatedObject.transform.position) + offset;
+            Vector3 position = Camera.main.WorldToScreenPoint(hintPro.relatedObject.transform.position);
+            // Permet de voir si l'object est derriere la camera
+            bool condition = position.x <0 ||position.y < 0 || position.z < 0;
+            if(!condition )
+            {
+                  if(hintPro.offset == null && !condition)
+                        hintstring.transform.position = position + offset;
+                    else
+                        hintstring.transform.position = position + hintPro.offset;
+            }
             else
-                hintstring.transform.position = Camera.main.WorldToScreenPoint(hintPro.relatedObject.transform.position) + hintPro.offset;
+            {
+                hintstring.transform.position = new Vector3(-100,0,-10);
+            }
+          
 
+            Debug.Log("Vector 3 position :" +hintstring.transform.position );
         }
 
     }
@@ -190,5 +233,19 @@ public class UIManager : MonoBehaviour
             component.icon.sprite = icon;
 
         return component;
+    }
+
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("MenuStart");
+    }
+    public void Restart()
+    {
+        SceneManager.LoadScene(LevelManager.Util.LevelData.sceneName);
+    }
+    public void Unpause()
+    {
+        LevelManager.Util.IsPaused = false;
     }
 }

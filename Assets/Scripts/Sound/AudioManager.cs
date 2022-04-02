@@ -59,7 +59,13 @@ public class AudioManager : MonoBehaviour
     [Header("Debug")] 
     [SerializeField]  Aliases[] TableAliasesLoaded = new Aliases[0];
 
+    bool _isPaused;
 
+
+    public bool IsPaused
+    {
+        set{ _isPaused = value;}
+    }
     // Add aliases to load
     public static void AddAliases(Aliases newAliases)
     {
@@ -126,7 +132,17 @@ public class AudioManager : MonoBehaviour
 
         TableAliasesLoaded = aliasesArray;    
 
-        DisableInusedAudioSource();
+        if(_isPaused)
+        {
+            PauseAllAudio();
+        }
+        
+        else
+        {
+            UnPauseAllAudio();
+            DisableInusedAudioSource();
+        }
+        
     }
 
     void DisableInusedAudioSource()
@@ -170,6 +186,28 @@ public class AudioManager : MonoBehaviour
 
     }
 
+    public static void PauseAllAudio()
+    {
+        foreach(GameObject aS in Util.audioSource )
+        {
+            AudioSource audio = aS.GetComponent<AudioSource>();
+            if(audio.isPlaying)
+            {
+                audio.Pause();
+            }  
+        }
+    }
+    public static void UnPauseAllAudio()
+    {
+        foreach(GameObject aS in Util.audioSource )
+        {
+            AudioSource audio = aS.GetComponent<AudioSource>();
+            //if(audio.UnPause)
+            {
+                audio.UnPause();
+            }  
+        }
+    }
     public static Aliase PlaySoundAtPosition(string aliaseName, Vector3 position)
     {
         Aliase clip = GetSoundByAliase(aliaseName);
