@@ -26,8 +26,9 @@ public class MenuStart : MonoBehaviour
      public Image mapPreview;
      public Text textDescription;
 
-    async void Start()
+    void Start()
     {
+        GameManager.state = State.MainMenu;
         OnBeginMenu();
         OnNomminationButton();
 

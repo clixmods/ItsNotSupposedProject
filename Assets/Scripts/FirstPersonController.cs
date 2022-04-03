@@ -99,10 +99,10 @@ namespace StarterAssets
 		}
 
 
-
+		// Watch if the visor aim a object etc
 		void WatchPickup()
 		{	
-			if(aimed != null)
+			if(InteractableObject._objectIsGrabbed == null  && aimed != null)
 			{
 				if(aimed.transform.TryGetComponent<Outline>(out Outline outlin))
 				{
@@ -114,11 +114,12 @@ namespace StarterAssets
 
 			Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * maxDistanceToPickupObject, Color.yellow);
 			RaycastHit Aim;
-			if(Physics.Raycast(Camera.main.transform.position , Camera.main.transform.TransformDirection(Vector3.forward)*maxDistanceToPickupObject , out Aim , maxDistanceToPickupObject  ))
+			if(InteractableObject._objectIsGrabbed == null && Physics.Raycast(Camera.main.transform.position , Camera.main.transform.TransformDirection(Vector3.forward)*maxDistanceToPickupObject , out Aim , maxDistanceToPickupObject  ))
 			{
 				if(Aim.transform.TryGetComponent<Outline>(out Outline obj))
 				{
-					obj.OutlineColor = Color.green;
+					if(obj.OutlineColor != Color.green)
+						obj.OutlineColor = new Color(1, 0.6f,0,1);
 					aimed = obj.gameObject;
 				}
 			}
@@ -155,6 +156,7 @@ namespace StarterAssets
 			_input.interact = false;
 		}
 
+
 		void MoveObject()
 		{
 			// On check si l'objet est trop loin lorsque le joueur le tien, si c'est trop loin on le drop
@@ -180,15 +182,6 @@ namespace StarterAssets
 		{
 			heldObj.GetComponent<InteractableObject>().DropBehavior();
 			heldObj = null;
-		}
-
-
-		void ChangeRotationTarget()
-		{
-			if(heldObj.TryGetComponent<Rigidbody>(out Rigidbody objRig))
-			{
-			
-			}
 		}
 
 		// When the Gameobject is waked
@@ -229,16 +222,12 @@ namespace StarterAssets
 			Move();
 			if(_input.pause)
 			{
-				SceneManager.LoadScene("MenuStart");
+				LevelManager.Util.IsPaused = !LevelManager.Util.IsPaused;
+				_input.pause = false;
 			}
-			
-
-			
-			
 		}
 		private void FixedUpdate()
 		{
-
 			WatchPickup();
 			if(heldObj != null)
 			{
@@ -254,7 +243,7 @@ namespace StarterAssets
 
 		private void LateUpdate()
 		{
-			if (!_input.rotate)
+			if (!_input.rotate && !LevelManager.Util.IsPaused)
 				CameraRotation();
 		}
 

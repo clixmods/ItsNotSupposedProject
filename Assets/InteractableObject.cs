@@ -18,11 +18,15 @@ public class InteractableObject : MonoBehaviour
 {
     [SerializeField] TypeInteracbleObject Type;
     [SerializeField]  bool _isGrabbed;
+
+
     protected Rigidbody _rb;
     MeshCollider _collider;
     protected Vector3 _initialPos;
     protected Quaternion _initialRotation;
     protected Outline _outline;
+
+    public static GameObject _objectIsGrabbed;
 
     protected HintstringProperty _hintstringProperty;
 
@@ -70,7 +74,14 @@ public class InteractableObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         UpdateSpecific();
+        if(_objectIsGrabbed != null && _objectIsGrabbed != gameObject)
+        {
+            _outline.OutlineWidth = 0;
+        }
+        else
+            _outline.OutlineWidth = 10;
+
+        UpdateSpecific();
             
     }
     void LateUpdate()
@@ -127,6 +138,8 @@ public class InteractableObject : MonoBehaviour
 
     public virtual void PickupBehavior()
     {
+        _objectIsGrabbed = gameObject;
+        _outline.OutlineColor = Color.green;
         _rb.Sleep();
         isGrabbed = true;
 		_rb.useGravity = false;
@@ -138,6 +151,8 @@ public class InteractableObject : MonoBehaviour
     }
     public virtual void DropBehavior()
     {
+        _objectIsGrabbed = null;
+
 		isGrabbed = false;
 		_rb.useGravity = true;
 		_rb.drag = 1;		
