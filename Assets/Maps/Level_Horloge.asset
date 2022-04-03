@@ -19,11 +19,13 @@ MonoBehaviour:
   sceneName: Enigme Horloge
   LevelPlayerSetting: {fileID: 11400000, guid: 42d926ec0f0c9ac46a5363226b85e5c1, type: 2}
   PlayerPrefab: {fileID: 5322241869790498710, guid: 5707faff5b183cb42803956e15bb172a, type: 3}
-  OOBLimit: -3
+  OOBLimit: -20.01
   CanEndgame: 0
   StartingDialogue: horloge_beginning
   ExplanationDialogue: 
   EndgameDialogue: horloge_end
+  CommandText: "[ZQSD] : Move \n[SPACE] to jump \n[E] to grab \n[Right Click] + [Mouse]
+    to rotate grabbed object \n[SHIFT] Sprint \n[ECHAP] Pause"
   myEvent:
     m_PersistentCalls:
       m_Calls:
