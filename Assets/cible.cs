@@ -49,10 +49,12 @@ public class cible : MonoBehaviour
              Object.GetComponent<MeshRenderer>().material = colorGreen;
          }
      }*/
-    /*private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("collision");
         if (collision.gameObject.layer == 10)
         {
+            Debug.Log("cible");
             nbTouch += 1;
             if(nbTouch==1)
             {
@@ -78,8 +80,8 @@ public class cible : MonoBehaviour
             }
             //Object.GetComponent<MeshRenderer>().material = colorGreen;
         }
-    }*/
-    private void OnTriggerEnter(Collision collision)
+    }
+    /*private void OnTriggerEnter(Collision collision)
     {
         if (collision.gameObject.layer == 10)
         {
@@ -108,5 +110,5 @@ public class cible : MonoBehaviour
             }
             //Object.GetComponent<MeshRenderer>().material = colorGreen;
         }
-    }
+    }*/
 }
