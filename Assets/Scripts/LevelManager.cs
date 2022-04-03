@@ -43,8 +43,8 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioManager.PlaySoundAtPosition("music_bg", transform.position);
         
-
         
 
         GameObject Player = Instantiate(LevelData.PlayerPrefab,PlayerSpawnPoint.position, Quaternion.identity);
