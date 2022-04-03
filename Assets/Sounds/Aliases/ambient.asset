@@ -1,0 +1,191 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72b3af19ad784041b69cc8393f9a421, type: 3}
+  m_Name: ambient
+  m_EditorClassIdentifier: 
+  DontLoad: 0
+  defaultMixerGroup: {fileID: 0}
+  aliases:
+  - name: amb_clock_loop
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: 66fbd8132bb160f4d9f332061cf267f1, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 0.395
+    isLooping: 1
+    minPitch: 1
+    maxPitch: 1
+    stereoPan: 0.928
+    spatialBlend: 1
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 
+    customDuration: 0
+  - name: amb_light_loop
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: bbad7939b90a1d54c8d17403a68f0462, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 0.37
+    isLooping: 1
+    minPitch: 0.74
+    maxPitch: 1.3
+    stereoPan: 0
+    spatialBlend: 1
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 
+    customDuration: 0
+  - name: amb_particle_loop
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: a766f80e86525c54a8bba567cc818e78, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 0.589
+    isLooping: 1
+    minPitch: 0.74
+    maxPitch: 1.3
+    stereoPan: 0
+    spatialBlend: 1
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 
+    customDuration: 0
+  - name: amb_wind_loop
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: 0a04c4ee3c19bf040865b13593a9d6aa, type: 3}
+    - {fileID: 8300000, guid: 8c170a99965c0de4c990cf8d0a87e1ec, type: 3}
+    - {fileID: 8300000, guid: d0dd430104460fd42958c5bbaaf618c9, type: 3}
+    - {fileID: 8300000, guid: 44634b3a3d203c14488e7bcd1ba4b3dd, type: 3}
+    - {fileID: 8300000, guid: 9c6d62d5160017b48a648893dc7d9498, type: 3}
+    - {fileID: 8300000, guid: e62c229d7c6d8d8418bb54457ef9a5e2, type: 3}
+    - {fileID: 8300000, guid: ffa72aab24069994a968d8a1e6fd1759, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 0.37
+    isLooping: 1
+    minPitch: 0.74
+    maxPitch: 1.3
+    stereoPan: 0
+    spatialBlend: 1
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 
+    customDuration: 0
+  - name: amb_light_loop
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: bbad7939b90a1d54c8d17403a68f0462, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 0.37
+    isLooping: 1
+    minPitch: 0.74
+    maxPitch: 1.3
+    stereoPan: 0
+    spatialBlend: 1
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 
+    customDuration: 0
+  - name: amb_light_loop
+    MixerGroup: {fileID: 0}
+    audio:
+    - {fileID: 8300000, guid: bbad7939b90a1d54c8d17403a68f0462, type: 3}
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 0.37
+    isLooping: 1
+    minPitch: 0.74
+    maxPitch: 1.3
+    stereoPan: 0
+    spatialBlend: 1
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    Spread: 0
+    MinDistance: 0
+    MaxDistance: 0
+    CurveType: 0
+    distanceCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    Text: 
+    customDuration: 0

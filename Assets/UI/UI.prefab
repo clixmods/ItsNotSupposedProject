@@ -863,8 +863,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 0}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4405,6 +4405,7 @@ MonoBehaviour:
   MapName: {fileID: 3678283522943863920}
   MapDescription: {fileID: 8186708157283729018}
   MapPreview: {fileID: 4445981683089237121}
+  commandText: {fileID: 4084107279414237445}
   subtitleComponent: {fileID: 6039262253515882916}
   offset: {x: 0, y: 15, z: 0}
 --- !u!1 &5517446031498142185

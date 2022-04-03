@@ -35,6 +35,8 @@ public class RoomTestObject : ScriptableObject
      [Tooltip("Endgame dialogue")]
     public string EndgameDialogue;
 
+     [Header("UI")]
+    public string CommandText = "[ZQSD] : Move \n[SPACE] to jump \n[E] to grab \n[Right Click] + [Mouse] to rotate grabbed object \n[SHIFT] Sprint \n[ECHAP] Pause";
     [Tooltip("undefined")]
     public UnityAction Test;
       public UnityAction action;

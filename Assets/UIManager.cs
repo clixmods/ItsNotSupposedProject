@@ -22,10 +22,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] TMP_Text MapDescription;
     [SerializeField] Image MapPreview;
 
+    [SerializeField] TMP_Text commandText;
+
     [Header("SUBTITLE")]
     [SerializeField] TMP_Text subtitleComponent;
     static float _durationSubtitle;
     static TMP_Text subtitleCompo;
+
 
     [Header("HINTSTRING")]
     [SerializeField] Vector3 offset = new Vector3(0, 15, 0);
@@ -62,11 +65,14 @@ public class UIManager : MonoBehaviour
             MapName.text = LevelManager.Util.LevelData.Name;
             MapDescription.text = LevelManager.Util.LevelData.Description;
             MapPreview.sprite = LevelManager.Util.LevelData.PreviewImage;
+            commandText.text = LevelManager.Util.LevelData.CommandText;
         }
         else
         {
             Debug.LogError("LevelData in levelManager is not set, InitPauseMenu function fail");
         }
+
+
         
     }
     // Update is called once per frame
