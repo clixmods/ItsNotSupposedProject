@@ -225,6 +225,8 @@ public class AudioManager : MonoBehaviour
         audioS.volume = clip.volume;
         audioS.loop = clip.isLooping;
         audioS.pitch = Random.Range(clip.minPitch, clip.maxPitch);
+
+        audioS.spatialBlend = clip.spatialBlend;
         if(clip.MixerGroup != null)
             audioS.outputAudioMixerGroup = clip.MixerGroup;
 
