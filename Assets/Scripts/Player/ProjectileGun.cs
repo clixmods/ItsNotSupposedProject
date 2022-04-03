@@ -125,8 +125,11 @@ namespace StarterAssets
             currentBullet.transform.forward = directionWithSpread.normalized;
 
             //Add forces to bullet
-            currentBullet.GetComponent<Rigidbody>().AddForce(directionWithSpread.normalized * shootForce, ForceMode.Impulse);
-            currentBullet.GetComponent<Rigidbody>().AddForce(fpsCam.transform.up * upwardForce, ForceMode.Impulse);
+            /*currentBullet.GetComponent<Rigidbody>().AddForce(directionWithSpread.normalized * shootForce, ForceMode.Impulse);
+            currentBullet.GetComponent<Rigidbody>().AddForce(fpsCam.transform.up * upwardForce, ForceMode.Impulse);*/
+
+            Vector3 moveDirection = Camera.main.transform.TransformDirection(Vector3.forward);
+            currentBullet.GetComponent<Rigidbody>().AddForce(moveDirection * shootForce, ForceMode.Impulse);
 
             //Instantiate muzzle flash, if you have one
             if (muzzleFlash != null)
