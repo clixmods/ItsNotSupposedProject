@@ -4,19 +4,38 @@ using UnityEngine;
 
 public class autoDestructBullet : MonoBehaviour
 {
-    // Start is called before the first frame update
+    float pvTime = 1;
     void Start()
     {
-        this.gameObject.SetActive(true);
+        this.gameObject.SetActive(true);       
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        AutoDestruct();
     }
-    private void OnCollisionEnter(Collision collision)
+    void AutoDestruct()
+    {
+        pvTime -= Time.deltaTime;
+        if(pvTime<=0)
+        {
+            Destroy(gameObject);           
+        }
+    }
+   
+    private void OnCollisionExit(Collision collision)
     {
         this.gameObject.SetActive(false);
+        //Destroy(gameObject);
     }
+    /*private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 1)
+        {
+            this.gameObject.SetActive(false);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }*/
 }

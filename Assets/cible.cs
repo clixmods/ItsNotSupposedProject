@@ -51,8 +51,10 @@ public class cible : MonoBehaviour
      }*/
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("collision");
         if (collision.gameObject.layer == 10)
         {
+            Debug.Log("cible");
             nbTouch += 1;
             if(nbTouch==1)
             {
@@ -79,4 +81,34 @@ public class cible : MonoBehaviour
             //Object.GetComponent<MeshRenderer>().material = colorGreen;
         }
     }
+    /*private void OnTriggerEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == 10)
+        {
+            nbTouch += 1;
+            if (nbTouch == 1)
+            {
+                lum1.GetComponent<MeshRenderer>().material = colorGreen;
+                EnableGravity();
+            }
+            if (nbTouch == 2)
+            {
+                lum2.GetComponent<MeshRenderer>().material = colorGreen;
+            }
+            if (nbTouch == 3)
+            {
+                lum3.GetComponent<MeshRenderer>().material = colorGreen;
+            }
+            if (nbTouch == 4)
+            {
+                lum4.GetComponent<MeshRenderer>().material = colorGreen;
+            }
+            if (nbTouch >= 4)
+            {
+                thisCible.GetComponent<MeshRenderer>().material = colorGreen;
+                door.gameObject.SetActive(false);
+            }
+            //Object.GetComponent<MeshRenderer>().material = colorGreen;
+        }
+    }*/
 }
