@@ -91,6 +91,8 @@ namespace StarterAssets
 		public float moveForce = 250;
 
 		GameObject aimed;
+
+		[SerializeField] Animation anim;
 		// Player property
 		public StarterAssetsInputs Input
 		{
@@ -317,11 +319,17 @@ namespace StarterAssets
 			if (_input.move != Vector2.zero)
 			{
 				// move
+				anim.Play("Walking");
 				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
 			}
+			else
+				anim.Play("KeyPose");
 
 			// move the player
 				_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+			if(_verticalVelocity > 0 )
+				anim.Play("Jumping");
+
 		}
 
 		private void JumpAndGravity()

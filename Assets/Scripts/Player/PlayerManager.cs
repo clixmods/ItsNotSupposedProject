@@ -18,6 +18,8 @@ public class PlayerManager : MonoBehaviour
     bool poison = false;
     float timePoison = 1;
 
+  
+
 
    
 
