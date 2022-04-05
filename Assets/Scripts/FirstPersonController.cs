@@ -128,6 +128,8 @@ namespace StarterAssets
 
 			if(_input.interact)
 			{
+
+				anim.Play("plr_Interact");
 				if(heldObj == null)
 				{
 					RaycastHit hit;
@@ -319,16 +321,16 @@ namespace StarterAssets
 			if (_input.move != Vector2.zero)
 			{
 				// move
-				anim.Play("Walking");
+				anim.Play("plr_walking");
 				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
 			}
-			else
-				anim.Play("KeyPose");
+			else if(!anim.IsPlaying("plr_Interact"))
+				anim.Play("plr_Idle");
 
 			// move the player
 				_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 			if(_verticalVelocity > 0 )
-				anim.Play("Jumping");
+				anim.Play("plr_JumpLoop");
 
 		}
 
