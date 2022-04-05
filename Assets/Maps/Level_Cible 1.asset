@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Cible
   Description: Shoot on the cibles the right to activate the 4 lights and open the
     dorr
-  PreviewImage: {fileID: 21300000, guid: 1e05ef6c9748f7d40a5e09e4ddc50c91, type: 3}
+  PreviewImage: {fileID: 21300000, guid: 3ba8611da648ac643a07fb8c07430e93, type: 3}
   isUnlocked: 0
   sceneName: Enigme Cible theo
   LevelPlayerSetting: {fileID: 11400000, guid: 42d926ec0f0c9ac46a5363226b85e5c1, type: 2}
@@ -25,6 +25,8 @@ MonoBehaviour:
   StartingDialogue: 
   ExplanationDialogue: 
   EndgameDialogue: 
+  CommandText: "[ZQSD] : Move \n[SPACE] to jump \n[E] to grab \n[Right Click] + [Mouse]
+    to rotate grabbed object \n[SHIFT] Sprint \n[ECHAP] Pause"
   myEvent:
     m_PersistentCalls:
       m_Calls: []

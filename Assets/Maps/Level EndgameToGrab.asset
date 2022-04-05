@@ -19,11 +19,13 @@ MonoBehaviour:
   sceneName: Enigme GrabEndgame
   LevelPlayerSetting: {fileID: 11400000, guid: 84aab76dc2addbf4fa9f2b106697892f, type: 2}
   PlayerPrefab: {fileID: 5322241869790498710, guid: 5707faff5b183cb42803956e15bb172a, type: 3}
-  OOBLimit: -3
+  OOBLimit: -5.35
   CanEndgame: 1
   StartingDialogue: interactgrab_beginning
   ExplanationDialogue: 
   EndgameDialogue: interactgrab_end
+  CommandText: "[ZQSD] : Move \n[SPACE] to jump \n[E] to grab \n[Right Click] + [Mouse]
+    to rotate grabbed object \n[SHIFT] Sprint \n[ECHAP] Pause"
   myEvent:
     m_PersistentCalls:
       m_Calls: []
