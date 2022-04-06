@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using StarterAssets;
 using UnityEngine.Events;
+using Cinemachine;
+
 public class LevelManager : MonoBehaviour
 {
     public RoomTestObject LevelData;
@@ -28,6 +30,11 @@ public class LevelManager : MonoBehaviour
     public UnityAction Test;
       public UnityAction action;
     public UnityEvent myEvent;
+
+    [SerializeField] bool _isCinematic;
+    [SerializeField] CinemachineDollyCart _CinematicTrack;
+     [SerializeField] GameObject _CinematicCamera;
+    GameObject Player ;
     void Awake()
     {
         // Permet de récuperer le component en static
@@ -47,7 +54,17 @@ public class LevelManager : MonoBehaviour
         
         
 
-        GameObject Player = Instantiate(LevelData.PlayerPrefab,PlayerSpawnPoint.position, Quaternion.identity);
+        
+        if(_isCinematic)
+        {   
+            GameObject camera = Instantiate(_CinematicCamera,PlayerSpawnPoint.position, Quaternion.identity, _CinematicTrack.transform);
+            camera.transform.localPosition = Vector3.zero;    
+            camera.transform.localRotation = Quaternion.identity; 
+            return;
+        }
+        else
+            Player = Instantiate(LevelData.PlayerPrefab,PlayerSpawnPoint.position, Quaternion.identity);
+
         PlayerManager playerManager = Player.GetComponentInChildren<PlayerManager>();
         FirstPersonController playerController = Player.GetComponentInChildren<FirstPersonController>();
 
@@ -143,16 +160,24 @@ public class LevelManager : MonoBehaviour
         {
             Time.timeScale = 0;
             AudioManager.Util.IsPaused = true;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            if(!_isCinematic)
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+            
         }
         else
         {
             Time.timeScale = 1;
             AudioManager.Util.IsPaused = false;
-                        Cursor.visible = false;
-
-            Cursor.lockState = CursorLockMode.Locked;
+            if(!_isCinematic)
+            {
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            
+             
         }
     }
     // Update is called once per frame
@@ -184,5 +209,16 @@ public class LevelManager : MonoBehaviour
         }
        
             
+    }
+
+    void FixedUpdate()
+    {
+        if(_isCinematic && Player != null)
+        {   
+                Player.transform.position = new Vector3(0, Player.transform.position.y, Player.transform.position.z); 
+                Player.transform.rotation = Quaternion.Euler(0,0,0);
+                Player = null;
+            return;
+        }
     }
 }

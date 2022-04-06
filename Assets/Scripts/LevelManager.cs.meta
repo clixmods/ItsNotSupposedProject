@@ -7,6 +7,8 @@ MonoImporter:
   - LevelData: {fileID: 11400000, guid: 95c4670b569b83845a6f0439ebd07e9f, type: 2}
   - PlayerSpawnPoint: {instanceID: 0}
   - PlayerEndgamePoint: {instanceID: 0}
+  - _CinematicTrack: {instanceID: 0}
+  - _CinematicCamera: {fileID: 9005220659476430823, guid: da38696eaa16ea74f828fa28c840c195, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
