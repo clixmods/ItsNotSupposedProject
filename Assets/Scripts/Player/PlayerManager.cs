@@ -8,15 +8,17 @@ public class PlayerManager : MonoBehaviour
     
     public PlayerDataObject PlayerSettings;
 
-    public float CurrentHealth = 3;
-    public float timePv = 5;
+    float CurrentHealth = 3;
+    float timePv = 5;
    
     public bool death;
     bool _isFalling;
-    public bool revive=false;
+    bool revive=false;
 
-    public bool poison = false;
-    public float timePoison = 1;
+    bool poison = false;
+    float timePoison = 1;
+
+  
 
 
    
@@ -33,32 +35,36 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
+        WatchOOB();   
     }
-    private void FixedUpdate() {
+    private void FixedUpdate() 
+    {   
+        // we check the poison and health here because the poison use physics from unity and for more
+        // precision its safe to use fixed update 
+        PoisonedCheck();
+        WatchHealth();
+    }
+    // Watch if the player falls under the playable area, if true we respawn him in his initial spawn
+    void WatchOOB()
+    {
+        if(LevelManager.Util.IsEndgame)
+            return;
+
         if(transform.position.y < LevelManager.Util.GetOOBLimit() && !death )
         {
             death = true;
             _isFalling=true;
         }
-        GroundedCheck();
-        
-        WatchHealth();
     }
-
-    private void GroundedCheck()
-		{
-            
-		     float GroundedOffset = -0.14f;
-            float GroundedRadius = 0.5f;
-			// set sphere position, with offset
-			Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
-		
-            poison = Physics.CheckSphere(spherePosition, GroundedRadius, PlayerSettings.DangerousLayers, QueryTriggerInteraction.Ignore);
-        
-            
-		}
+    // Check if the player touch a dangerouslayer (set in PlayerSettings)
+    private void PoisonedCheck()
+	{
+		float GroundedOffset = -0.14f;
+        float GroundedRadius = 0.5f;
+		// set sphere position, with offset
+		Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
+        poison = Physics.CheckSphere(spherePosition, GroundedRadius, PlayerSettings.DangerousLayers, QueryTriggerInteraction.Ignore);     
+	}
     // This function check the health of the player
     void WatchHealth()
     {

@@ -21,25 +21,31 @@ public class LevelManager : MonoBehaviour
     bool endgameTriggered;
     Transform _player;
     bool _firstSpawn;
+    bool _isPaused;
 
     
     [Tooltip("undefined")]
     public UnityAction Test;
       public UnityAction action;
     public UnityEvent myEvent;
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         // Permet de récuperer le component en static
         if(Util == null)
         {
             Util = this;
         }
-
         if(LevelData == null)
         {
             Debug.LogError("Attention le LevelData dans le levelManager de la scène n'a pas été configuré !");
         }
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        AudioManager.PlaySoundAtPosition("music_bg", transform.position);
+        
+        
 
         GameObject Player = Instantiate(LevelData.PlayerPrefab,PlayerSpawnPoint.position, Quaternion.identity);
         PlayerManager playerManager = Player.GetComponentInChildren<PlayerManager>();
@@ -57,8 +63,6 @@ public class LevelManager : MonoBehaviour
         playerController.transform.position = PlayerSpawnPoint.transform.position;
         playerController.enabled = true;
 
-        // Crée une boite de dialogue sur le monde 3D
-       // UIManager.CreateHintString(PlayerEndgamePoint.gameObject, LevelData.Description ,6666 );
         // Joue le dialogue de début de partie
         if(LevelData.StartingDialogue != "")
         {
@@ -89,6 +93,33 @@ public class LevelManager : MonoBehaviour
         get{ return _canEndgame;}
         set{ _canEndgame = value;}
     }
+    // Help to know if we are in endgame phase, useful to block dialogue when the player fall
+    public bool IsEndgame
+    {
+        get{return endgameTriggered;}
+        set{endgameTriggered = value;}
+    }
+
+    // Help to know if we are in pause phase
+    public bool IsPaused
+    {
+        get
+        {
+            // Remove the pause when the endgame is on
+            if(IsEndgame)
+                _isPaused = false;
+
+
+
+            return _isPaused;
+        }
+
+        set{
+
+            _isPaused = value;
+            
+            }
+    }
     // Renvoi le point de spawn initial du joueur
     public Transform GetPlayerSpawnPoint()
     {
@@ -99,17 +130,36 @@ public class LevelManager : MonoBehaviour
     {
         return LevelData.OOBLimit;
     }
-    // Renvoi au menu principal
+    // Start the endgame to return on main menu
     public void Endgame()
     {
-        
         AudioManager.PlaySoundAtPosition(LevelData.EndgameDialogue, transform.position);
         endgameTriggered = true;
     }
 
+    void WatchPause()
+    {
+        if(IsPaused)
+        {
+            Time.timeScale = 0;
+            AudioManager.Util.IsPaused = true;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            AudioManager.Util.IsPaused = false;
+                        Cursor.visible = false;
+
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
+        WatchPause();
+
         if( durationToNextExplanatation != -1)
         {
             if(timer <= durationToNextExplanatation)

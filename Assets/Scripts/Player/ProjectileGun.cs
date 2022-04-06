@@ -53,10 +53,14 @@ namespace StarterAssets
         }
         private void Awake()
         {
-            Destroy(this);
             //make sure magazine is full
             bulletsLeft = magazineSize;
             readyToShoot = true;
+        }
+        private void Start()
+        {
+            if (_input == null) // si jamais on l'a setup avant
+                _input = GetComponent<StarterAssetsInputs>();
         }
 
         private void Update()
@@ -69,7 +73,7 @@ namespace StarterAssets
         }
         private void MyInput()
         {
-            //Check if allowed to hold down button and take corresponding input
+             //Check if allowed to hold down button and take corresponding input
             if (allowButtonHold) shooting = _input.shoot;
 
             else shooting = _input.shoot;
@@ -121,8 +125,11 @@ namespace StarterAssets
             currentBullet.transform.forward = directionWithSpread.normalized;
 
             //Add forces to bullet
-            currentBullet.GetComponent<Rigidbody>().AddForce(directionWithSpread.normalized * shootForce, ForceMode.Impulse);
-            currentBullet.GetComponent<Rigidbody>().AddForce(fpsCam.transform.up * upwardForce, ForceMode.Impulse);
+            /*currentBullet.GetComponent<Rigidbody>().AddForce(directionWithSpread.normalized * shootForce, ForceMode.Impulse);
+            currentBullet.GetComponent<Rigidbody>().AddForce(fpsCam.transform.up * upwardForce, ForceMode.Impulse);*/
+
+            Vector3 moveDirection = Camera.main.transform.TransformDirection(Vector3.forward);
+            currentBullet.GetComponent<Rigidbody>().AddForce(moveDirection * shootForce, ForceMode.Impulse);
 
             //Instantiate muzzle flash, if you have one
             if (muzzleFlash != null)
