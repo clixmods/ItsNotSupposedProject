@@ -112,7 +112,7 @@ public class UIManager : MonoBehaviour
             }
           
 
-            Debug.Log("Vector 3 position :" +hintstring.transform.position );
+            //ebug.Log("Vector 3 position :" +hintstring.transform.position );
         }
 
     }
