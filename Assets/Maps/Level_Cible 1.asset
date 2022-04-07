@@ -19,7 +19,7 @@ MonoBehaviour:
   isUnlocked: 0
   sceneName: Enigme Cible theo
   LevelPlayerSetting: {fileID: 11400000, guid: 42d926ec0f0c9ac46a5363226b85e5c1, type: 2}
-  PlayerPrefab: {fileID: 5322241869790498710, guid: 5707faff5b183cb42803956e15bb172a, type: 3}
+  PlayerPrefab: {fileID: 5322241869790498710, guid: 81e69e10c6819be44b6d07dd1b3af273, type: 3}
   OOBLimit: -3
   CanEndgame: 1
   StartingDialogue: 
