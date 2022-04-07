@@ -207,6 +207,58 @@ PrefabInstance:
       propertyPath: m_Name
       value: Assets
       objectReference: {fileID: 0}
+    - target: {fileID: 813225650081457306, guid: a5800a02f291ebe48b1e6faec63383d2, type: 3}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 813240223204779540, guid: a5800a02f291ebe48b1e6faec63383d2, type: 3}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 813555269300488930, guid: a5800a02f291ebe48b1e6faec63383d2, type: 3}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 813604189861263904, guid: a5800a02f291ebe48b1e6faec63383d2, type: 3}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 813767090055434831, guid: a5800a02f291ebe48b1e6faec63383d2, type: 3}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 813805181778831191, guid: a5800a02f291ebe48b1e6faec63383d2, type: 3}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 813843711247068436, guid: a5800a02f291ebe48b1e6faec63383d2, type: 3}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 813907125380631763, guid: a5800a02f291ebe48b1e6faec63383d2, type: 3}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 813932956737484938, guid: a5800a02f291ebe48b1e6faec63383d2, type: 3}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 813946344052456598, guid: a5800a02f291ebe48b1e6faec63383d2, type: 3}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 813995062931666265, guid: a5800a02f291ebe48b1e6faec63383d2, type: 3}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 814138348221408812, guid: a5800a02f291ebe48b1e6faec63383d2, type: 3}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 814571244402670485, guid: a5800a02f291ebe48b1e6faec63383d2, type: 3}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5800a02f291ebe48b1e6faec63383d2, type: 3}
 --- !u!4 &7318278225148626077 stripped
