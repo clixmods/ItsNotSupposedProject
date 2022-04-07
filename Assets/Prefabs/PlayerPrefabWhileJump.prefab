@@ -50,31 +50,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: da38696eaa16ea74f828fa28c840c195, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 48.45554
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: da38696eaa16ea74f828fa28c840c195, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3.3819008
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: da38696eaa16ea74f828fa28c840c195, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2.506491
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: da38696eaa16ea74f828fa28c840c195, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.8275633
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: da38696eaa16ea74f828fa28c840c195, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.5411796
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: da38696eaa16ea74f828fa28c840c195, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.123831175
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: da38696eaa16ea74f828fa28c840c195, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.08324394
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: da38696eaa16ea74f828fa28c840c195, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -230,6 +230,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9050751541055695331, guid: eeebdcb186c87654894652dc1f09c735, type: 3}
   m_PrefabInstance: {fileID: 4629851908860105341}
   m_PrefabAsset: {fileID: 0}
+--- !u!111 &2202485156380458486 stripped
+Animation:
+  m_CorrespondingSourceObject: {fileID: 6832036859374595979, guid: eeebdcb186c87654894652dc1f09c735, type: 3}
+  m_PrefabInstance: {fileID: 4629851908860105341}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1222000202688764918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,6 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63ddbdd8ab3f4474d8c68f5cf244307d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerSettings: {fileID: 0}
   MoveSpeed: 4
   SprintSpeed: 6
   RotationSpeed: 1
@@ -265,6 +271,7 @@ MonoBehaviour:
   maxDistanceToPickupObject: 5000
   pickedObjectStartPos: {fileID: 4456931222151822238}
   moveForce: 250
+  anim: {fileID: 2202485156380458486}
 --- !u!1001 &4629851908959850188
 PrefabInstance:
   m_ObjectHideFlags: 0
